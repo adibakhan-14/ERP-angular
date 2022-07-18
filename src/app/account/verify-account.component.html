@@ -1,0 +1,46 @@
+<div class="overlay" id="showcase">
+  <div class="logo">
+    <img src="../assets/images/logo.png " width="200" alt="logo.img">
+  </div>  
+  <mat-divider> </mat-divider>
+  <mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate">
+  </mat-progress-bar>
+
+<div fxLayout="column" fxLayoutAlign="space-between center"  class = "pad">
+  <form [formGroup]="form" (ngSubmit)="onVerify()">
+
+           <div class="rounded-input">
+            <input
+              type="text"
+              formControlName="verficationCode"
+              [ngClass]="{ 'is-invalid': submitted && f.verficationCode.errors }"
+              style="text-align: center;"
+              placeholder="Verfication Code"
+            />
+            <div
+              *ngIf="submitted && f.verficationCode.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.verficationCode.errors.required">
+            Verification code is required
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="space-between center" >
+            <button
+              class="button"
+              mat-raised-button
+              [class.spinner]="loading"
+              [disabled]="loading"
+            >
+              Verify
+            </button>
+
+          </div>
+        </form>
+      </div>
+   
+  </div>
+
+

@@ -1,0 +1,202 @@
+<h2 mat-dialog-title>In progress</h2>
+
+<div mat-dialog-content>
+  <mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate">
+  </mat-progress-bar>
+   <div fxLayout="row" fxLayoutAlign="space-evenly" >
+     <div fxFlex="37" class="example-card">
+       <div class="card-design0">
+         <h3>Pending</h3>
+       </div>
+       <div style="overflow-y: auto; height: 85%;">
+        <div *ngIf="pending.length>0 ;else order_truck">
+        <table class="requiredOne">
+          <thead>
+            <th>No</th>
+           <th>Vendor Name</th>
+            <th>Truck Reg</th>
+            <th>Action</th>
+          </thead>
+          <tbody style="width: 100%; text-align: center;">
+            <tr *ngFor="let truck of pending; let i = index">
+<td><input type="checkbox" value="{{truck.truck_reg}}" (change)="checkPendingToLoadComplete()" [(ngModel)]="pending[i].checked"></td> 
+              <td>{{ truck?.vendor_name }} </td>
+              <td>{{ truck?.truck_reg }}</td>
+              <td>
+                <button
+                  (click)="deleteTruck(truck)"
+                  mat-mini-fab
+                  style="background-color: red;"
+                >
+                  <mat-icon class="icon-display">delete forever</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>         
+       </div>
+       </div>
+      <ng-template #order_truck>
+      
+        <div class="truckadd">
+          <p >
+       No truck
+          </p>
+        </div>
+      </ng-template>
+
+     </div>
+     <div fxFlex="37" class="example-card">
+        <div class="card-design1">
+          <h3>Load Complete</h3>
+        </div>
+        <div style="overflow-y: auto; height: 85%;">
+     
+          <div *ngIf="loadCompleted.length>0 ;else order_truck">
+            <table class="requiredOne">
+              <thead>
+                <th>No</th>
+               <th>Vendor Name</th>
+                <th>Truck Reg</th>
+                <th>Action</th>
+              </thead>
+              <tbody style="width: 100%; text-align: center;">
+                <tr *ngFor="let truck of loadCompleted; let i = index">
+    <td><input type="checkbox" value="{{truck.truck_reg}}" (change)="checkLoadCompleteToInTransit()" [(ngModel)]="loadCompleted[i].checked"></td> 
+                  <td>{{ truck?.vendor_name }} </td>
+                  <td>{{ truck?.truck_reg }}</td>
+                  <td>
+                    <button
+                      (click)="deleteTruck(truck)"
+                      mat-mini-fab
+                      style="background-color: red;"
+                    >
+                      <mat-icon class="icon-display">delete forever</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>         
+           </div>
+          
+        </div>
+
+        <ng-template #order_truck>
+      
+          <div class="truckadd">
+            <p >
+         No truck
+            </p>
+          </div>
+        </ng-template>
+      </div>
+
+      <div fxFlex="37" class="example-card">
+        <div class="card-design2">
+          <h3>In Transit</h3>
+        </div>
+    
+ 
+        <div style="overflow-y: auto; height: 85%;">
+          
+          <div *ngIf="inTransit.length>0 ;else order_truck">
+            <table class="requiredOne">
+              <thead>
+                <th>No</th>
+               <th>Vendor Name</th>
+                <th>Truck Reg</th>
+                <th>Action</th>
+              </thead>
+              <tbody style="width: 100%; text-align: center;">
+                <tr *ngFor="let truck of inTransit; let i = index">
+    <td><input type="checkbox" value="{{truck.truck_reg}}" (change)="checkInTransitToUnLoadComplete()" [(ngModel)]="inTransit[i].checked"></td> 
+                  <td>{{ truck?.vendor_name }} </td>
+                  <td>{{ truck?.truck_reg }}</td>
+                  <td>
+                    <button
+                      (click)="deleteTruck(truck)"
+                      mat-mini-fab
+                      style="background-color: red;"
+                    >
+                      <mat-icon class="icon-display">delete forever</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>         
+           </div>
+        </div>
+        <ng-template #order_truck>
+      
+          <div class="truckadd">
+            <p >
+         No truck
+            </p>
+          </div>
+        </ng-template>
+      </div>
+
+      <div fxFlex="37" class="example-card">
+        <div class="card-design3">
+          <h3>Unload Complete</h3>
+        </div>
+    
+        <div style="overflow-y: auto; height: 85%;">
+          <div *ngIf="unloadComplete.length>0 ;else order_truck">
+            <table class="requiredOne">
+              <thead>
+                <th>No</th>
+               <th>Vendor Name</th>
+                <th>Truck Reg</th>
+                <th>Action</th>
+
+              </thead>
+              <tbody style="width: 100%; text-align: center;">
+                <tr *ngFor="let truck of unloadComplete; let i = index">
+    <td><input type="checkbox" value="{{truck.truck_reg}}" (change)="checkUnloadCompelete()" [(ngModel)]="unloadComplete[i].checked"></td> 
+                  <td>{{ truck?.vendor_name }} </td>
+                  <td>{{ truck?.truck_reg }}</td>
+                  <td>
+                    <button
+                      (click)="deleteTruck(truck)"
+                      mat-mini-fab
+                      style="background-color: red;"
+                    >
+                      <mat-icon class="icon-display">delete forever</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>         
+           </div>
+        </div>
+
+        <ng-template #order_truck>
+      
+          <div class="truckadd">
+            <p >
+         No truck
+            </p>
+          </div>
+        </ng-template>
+      </div>
+
+       
+   </div>
+  </div>
+  <br />
+   
+  <div fxLayout="row" fxLayoutAlign="end" >
+    <button class="mat-raised-button mat-primary" type="submit" (click)="releaseTruck()">Release</button>
+    </div>
+  <div mat-dialog-actions fxLayoutAlign="space-around center">
+   <!-- <div fxLayout="column" fxLayoutAlign="space-around center"> -->
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+    <button mat-raised-button color="primary" type="submit" (click)="moveToPreviousStatus()" >Previous</button>
+    <button mat-raised-button color="accent" type="submit" (click)="moveToNextStatus()">Next</button>
+    
+    </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <button class="mat-raised-button mat-primary" type="submit" (click)="cancel()">Cancel</button>
+      </div>

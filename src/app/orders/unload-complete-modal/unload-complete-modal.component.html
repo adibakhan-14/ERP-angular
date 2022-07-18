@@ -1,0 +1,166 @@
+
+    <!-- <div class="card-container">
+
+        <h1 mat-dialog-title>{{data.name}} Unload Complete</h1>
+
+    </div> -->
+
+    <!-- <mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate"></mat-progress-bar> -->
+
+    <!-- <p></p>
+    <table class="requiredOne">
+        <thead>
+            <th>Trip Number</th>
+            <th>Unloading District</th>
+            <th>Unloading point</th>
+            <th>Unloading Person</th>
+            <th>Unloading Person Contact</th>
+            <th>Unloading date</th>
+        </thead>
+        <tbody style="text-align: center; ">
+            <tr *ngFor="let item of [this.data]; let i = index" class="customClass">
+                <td>
+                    {{item.trip_id}}
+                </td>
+                <td>
+                    <tr *ngFor="let item of this.data.truck_details.unloading_points;">
+                        {{item.unloadingDistrict}}
+                    </tr>
+                </td>
+                <td>
+                    <tr *ngFor="let item of this.data.truck_details.unloading_points;">
+                        {{item.unloadingPoint}}
+                    </tr>
+                </td>
+                <td>
+                    <tr *ngFor="let item of this.data.truck_details.unloading_points;">
+                        {{item.unloadingPerson}}
+                    </tr>
+                </td>
+                <td>
+                    <tr *ngFor="let item of this.data.truck_details.unloading_points;">
+                        {{item.unloadpersonContact}}
+                    </tr>
+                </td>
+                <td>
+                    <tr *ngFor="let item of this.data.truck_details.unloading_points;">
+                        {{item.unloadingDate | date}}
+                    </tr>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div fxLayoutAlign="center center" style="height: 150px;">
+      <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+        CANCEL
+      </button>
+        <button (click)="onClick()" mat-raised-button color="success">
+        Confirm
+      </button>
+    </div>
+
+     -->
+
+
+     <div class="card-container">
+        <h1 mat-dialog-title>{{ data.name }} (Unloading Point)</h1>
+      </div>
+      <br />
+      <div>
+        <form [formGroup]="myForm">
+          <mat-card class="loadInfo">
+          <div class='myDiv'>
+            <h2 style="margin-bottom: -40px">
+              Truck Info:
+            </h2>
+              <span> Truck Length: {{data.truck_details.truck_length.name}}</span>
+              <span> Truck Capacity: {{ data.truck_details.truck_length.weight}}</span>
+          </div>
+            <h2 style="margin-bottom: -40px">Unloading Information:</h2>
+            <div
+              formArrayName="arr"
+              *ngFor="
+                let a of myForm.get('arr')['controls'];
+                let i = index;
+                let productIndex = index
+              "
+             >
+              <div
+                [formGroupName]="productIndex"
+                fxLayout="row wrap"
+                fxLayoutGap="15px"
+                fxFlex="100%"
+                fxFlex.sm="100%"
+                fxLayout.lt-sm="column"
+                fxFlex.xs="100%"
+                fxLayoutAlign="flex-start"
+              >
+                <mat-form-field appearance="outline" fxFlex="15%">
+                  <mat-label>Unloading District</mat-label>
+                  <input
+                    matInput
+                    placeholder="Unloading District"
+                    formControlName="unloadingDistrict"
+                    readonly
+                  />
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="15%">
+                  <mat-label>Unloading Point</mat-label>
+                  <input
+                    matInput
+                    placeholder="Unloading Point"
+                    formControlName="unloadingPoint"
+                    readonly
+                  />
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="15%">
+                  <mat-label>Unloading Person</mat-label>
+                  <input
+                    matInput
+                    placeholder="Unloading Person"
+                    formControlName="unloadingPerson"
+                    readonly
+                  />
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="15%">
+                  <mat-label>Unloading Person Contact</mat-label>
+                  <input
+                    matInput
+                    placeholder="Unloading Person Contact"
+                    formControlName="unloadpersonContact"
+                    readonly
+                  />
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="15%">
+                    <mat-label>Actual Unloading Date</mat-label>
+                    <input class="label-padding" matInput [matDatepicker]="picker1" formControlName="actualUnloadingDate" placeholder="Actual Unloading Date" >
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="15%">
+                    <mat-label class="label-padding">Actual Unloading Time</mat-label>
+                    <input type="time" id="loading_time" matInput formControlName="actualUnloadingTime" placeholder="Actual Unloading Time" >
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card>
+          <br />
+        </form>
+        <br />
+        <div fxLayoutAlign="center center" style="height: 100px">
+          <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+            CANCEL
+          </button>
+          <button
+            (click)="onClick()"
+            mat-raised-button
+            color="success"
+            [disabled]="!this.myForm.valid"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>

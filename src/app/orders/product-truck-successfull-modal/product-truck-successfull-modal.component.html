@@ -1,0 +1,74 @@
+<!-- <div class="card-container">
+    <h1 mat-dialog-title>Trip Wise Challan Details Of {{this.data.name}}</h1>
+</div>
+<mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate"></mat-progress-bar>
+
+<p></p>
+
+<table class="requiredOne">
+    <thead>
+        <th>Order Id</th>
+        <th>Trip Id</th>
+        <th>Loading District</th>
+        <th>Loading Point</th>
+        <th>Unoading District</th>
+        <th>Unoading Point</th>
+        <th>Product Name</th>
+        <th>Product Qty</th>
+        <th>Product Weight</th>
+        <th>Print Challan</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of finalData; let i = index" class="customClass">
+            <td>
+                {{this.leaseData[0].information[i].order_id}}
+            </td>
+            <td>
+                {{ 'Trip_'+(i+1)}}
+            </td>
+            <td>
+                <tr *ngFor="let item of this.leaseData[0].information[i].truck_details[0].destination[0].loadingPoint;">
+                    {{item.load_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.leaseData[0].information[i].truck_details[0].destination[0].loadingPoint;">
+                    {{item.loading_point}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.leaseData[0].information[i].truck_details[0].destination[1].unloadingPoint;">
+                    {{item.unload_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.leaseData[0].information[i].truck_details[0].destination[1].unloadingPoint;">
+                    {{item.unloading_point}}
+                </tr>
+            </td>
+            <td>
+                <tr>
+                    {{this.leaseData[0].information[i].product_name}}
+                </tr>
+            </td>
+            <td>
+                <tr>
+                    {{this.leaseData[0].information[i].product_quantity}}
+                </tr>
+            </td>
+            <td>
+                <tr>
+                    {{this.leaseData[0].information[i].product_weight}}
+                </tr>
+            </td>
+            <td>
+                <button mat-raised-button color="primary" (click)="challan(this.leaseData[0].information[i].trip_id,i)">Print Challan</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div fxLayoutAlign="center center" style="height: 150px;">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+    CANCEL
+  </button>
+</div> -->

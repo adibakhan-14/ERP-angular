@@ -1,0 +1,267 @@
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <div style="background-color: #1bbdb8; width: 730px; margin-top: -24px">
+    <title
+      style="text-align: center; padding-top: 15px; color: #ffffff"
+      mat-dialog-title
+    >
+      Truck add
+    </title>
+  </div>
+
+  <mat-progress-bar
+    style="padding-top: 15px"
+    *ngIf="asyncService?.isLoading | async"
+    mode="indeterminate"
+  >
+  </mat-progress-bar>
+
+  <div
+    fxLayout="column"
+    fxLayoutAlign="space-around center"
+    style="margin-top: 10px"
+  >
+    <form
+      [id]="formId"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit(form.value)"
+      novalidate
+    >
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+        <div
+          fxLayout="row wrap"
+          fxLayoutGap="10px"
+          fxFlex="100%"
+          fxFlex.sm="50%"
+          fxLayout.lt-sm="column"
+          fxFlex.xs="100%"
+          fxLayoutAlign="flex-start"
+        >
+          <!-- <mat-form-field fxFlex="0 1 calc(20% - 10px)" fxFlex.lt-md="0 1 calc(20% - 10px)" fxFlex.lt-sm="100%"
+            fxFlex.xs="100%" appearance="none" class="from-color">
+
+            <mat-label class="label-padding">Truck Registration no.</mat-label>
+            <span matPrefix> <select style="border: none;" (change)="selectOPtion(reg.value)"  #reg >
+              <option value="DM NA">DM NA</option>
+              <option value="DM TA">DM TA</option>
+            </select>
+            </span>
+            <span>
+
+
+            </span>
+            <input class="label-padding" matInput placeholder="Truck Registration no." formControlName="truck_reg"
+             type="text"/>
+
+            <mat-error *ngIf="truck_reg.invalid && (truck_reg.dirty || truck_reg.touched)">
+              <ng-container *ngIf="truck_reg.hasError('required')">Truck Registration no. is required.</ng-container>
+            </mat-error>
+          </mat-form-field> -->
+
+          <mat-form-field appearance="outline">
+            <mat-label>Metro</mat-label>
+            <input
+              matInput
+              placeholder="Metro"
+              formControlName="metro"
+              required
+              readonly="true"
+            />
+
+            <!-- <mat-select formControlName="metro" required >
+                            <mat-option readonly="true" *ngFor="let metro of metroList" [value]="metro.name">
+                                {{ metro.name }}
+                            </mat-option>
+                        </mat-select> -->
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Serial </mat-label>
+            <input
+              matInput
+              placeholder="Serial"
+              formControlName="serial"
+              required
+              readonly="true"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Number</mat-label>
+            <input
+              matInput
+              placeholder="Number"
+              formControlName="number"
+              required
+              readonly="true"
+            />
+            <mat-icon matSuffix>electric_car</mat-icon>
+          </mat-form-field>
+
+          <!-- <mat-form-field fxFlex="0 1 calc(50% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="none" class="from-color">
+                        <mat-label class="label-padding">Search Partner</mat-label>
+                        <input class="label-padding" matInput placeholder="Partner Name | Phone" aria-label="State" [matAutocomplete]="auto" [formControl]="vendorControl" />
+                        <mat-icon matSuffix>search</mat-icon>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectvendor($event.option.value)">
+                            <mat-option *ngFor="let state of filteredStates | async" [value]="state.vendor_id">
+                                <span>{{ state.name }}</span>
+
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field> -->
+
+          <!-- <mat-form-field fxFlex="0 1 calc(50% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+            fxFlex.xs="100%" appearance="none" class="from-color">
+            <mat-label class="label-padding">Partner Phone</mat-label>
+            <input class="label-padding" matInput placeholder="Phone" formControlName="phone" />
+            <mat-error *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+              <ng-container *ngIf="phone.hasError('required')">Partner phone is required.</ng-container>
+            </mat-error>
+          </mat-form-field> -->
+
+          <mat-form-field
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="none"
+            class="from-color"
+          >
+            <mat-label class="label-padding">Type</mat-label>
+            <mat-select
+              formControlName="type"
+              required
+              (valueChange)="typeValue($event)"
+            >
+              <mat-option *ngFor="let type of types" [value]="type.value">
+                {{ type.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="type.invalid && (type.dirty || type.touched)">
+              <ng-container *ngIf="type.hasError('required')"
+                >Type is required.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="none"
+            class="from-color"
+          >
+            <mat-label class="label-padding">Length</mat-label>
+            <mat-select
+              formControlName="length"
+              required
+              (valueChange)="capacityInfo($event)"
+            >
+              <mat-option *ngFor="let length of lengths" [value]="length.length">
+                {{ length.length }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="length.invalid && (length.dirty || length.touched)"
+            >
+              <ng-container *ngIf="length.hasError('required')"
+                >Length is required.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="none"
+            class="from-color"
+          >
+            <mat-label class="label-padding">Weight</mat-label>
+            <input
+              class="label-padding"
+              readonly
+              matInput
+              placeholder="weight"
+              formControlName="weight"
+            />
+            <mat-error
+              *ngIf="weight.invalid && (weight.dirty || weight.touched)"
+            >
+              <ng-container *ngIf="weight.hasError('required')"
+                >Weight is required.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="none"
+            class="from-color"
+          >
+            <mat-label class="label-padding">Device ID</mat-label>
+            <input
+              class="label-padding"
+              matInput
+              placeholder="Device Id"
+              formControlName="device_id"
+            />
+            <mat-error
+              *ngIf="
+                device_id.invalid && (device_id.dirty || device_id.touched)
+              "
+            >
+              <ng-container *ngIf="device_id.hasError('required')"
+                >Device Id is required.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="none"
+            class="from-color"
+            style="visibility: hidden"
+          >
+            <mat-label class="label-padding">Status</mat-label>
+            <mat-select formControlName="status" required>
+              <mat-option
+                *ngFor="let status of statusOtherVendor"
+                [value]="status.value"
+              >
+                {{ status.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="status.invalid && (status.dirty || status.touched)"
+            >
+              <ng-container *ngIf="status.hasError('required')"
+                >Status is required.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions fxLayoutAlign="end end">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+      Cancel
+    </button>
+    <button
+      [attr.form]="formId"
+      type="submit"
+      mat-raised-button
+      color="success"
+      [disabled]="asyncService?.isLoading | async"
+    >
+      Submit
+    </button>
+  </div>
+</div>

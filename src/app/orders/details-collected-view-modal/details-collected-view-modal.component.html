@@ -1,0 +1,243 @@
+<div>
+    <span class="span-header">Order ID: {{this.data.order_id}}</span>
+    <span class="span-header">({{this.data.name}})</span>
+</div>
+<div>
+    <span class="span-header">Trip ID: {{this.data.trip_id}}</span>
+</div>
+<div class="div-span">
+    <span class="span-header">Truck Information:</span>
+</div>
+<table class="requiredOne">
+    <thead style="background: #b7c1ca;">
+        <th>Truck Type</th>
+        <th>Truck Size</th>
+        <th>Customer Fare</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of [this.data]; let i = index" class="customClass">
+            <td>
+                {{this.data.truck_details.truck_type}}
+            </td>
+            <td>
+                {{this.data.truck_details.truck_length.length + " feet"}}
+            </td>
+            <td>
+                {{this.data.truck_details.truck_fare + " tk"}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="div-span">
+    <span class="span-header">Product Info:</span>
+</div>
+<table class="requiredOne">
+    <thead style="background: #b7c1ca;">
+        <th>Product Name</th>
+        <th>Product Material</th>
+        <th>Product Weight</th>
+        <th>Product Quantity</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of this.data.productInfo; let i = index" class="customClass">
+            <td>
+                {{item.productName}}
+            </td>
+            <td>
+                {{item.productMaterial}}
+            </td>
+            <td>
+                {{item.productWeight}}
+            </td>
+            <td>
+                {{item.productQuantity}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="div-span">
+    <span class="span-header">Loading Points:</span>
+</div>
+<table class="requiredOne">
+    <thead style="background: #b7c1ca;">
+        <th>Loading District</th>
+        <th>Loading Point</th>
+        <th>Loading Person</th>
+        <th>Loading Person's Contact</th>
+        <th>Loading Date</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of this.data.truck_details.loading_points; let i = index" class="customClass">
+            <td>
+                {{item.loadingDistrict}}
+            </td>
+            <td>
+                {{item.loadingPoint}}
+            </td>
+            <td>
+                {{item.loadingPerson}}
+            </td>
+            <td>
+                {{item.personContact}}
+            </td>
+            <td>
+                {{item.loadingDate | date}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="div-span">
+    <span class="span-header">Unloading Points:</span>
+</div>
+<table class="requiredOne">
+    <thead style="background: #b7c1ca;">
+        <th>Unloading District</th>
+        <th>Unloading Point</th>
+        <th>Unloading Person</th>
+        <th>Unloading Person's Contact</th>
+        <th>Unloading Date</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of this.data.truck_details.unloading_points; let i = index" class="customClass">
+            <td>
+                {{item.unloadingDistrict}}
+            </td>
+            <td>
+                {{item.unloadingPoint}}
+            </td>
+            <td>
+                {{item.unloadingPerson}}
+            </td>
+            <td>
+                {{item.unloadpersonContact}}
+            </td>
+            <td>
+                {{item.unloadingDate | date}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!-- <div class="div-span">
+    <span class="span-header">Loading Points:</span>
+</div>
+<table class="requiredOne">
+    <thead style="background: #a4ccb5;">
+        <th>Order Id</th>
+        <th>Trip Number</th>
+        <th>Loading District</th>
+        <th>Loading point</th>
+        <th>Loading Person</th>
+        <th>Loading Person Number</th>
+        <th>Loading date</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of this.data.truck_details; let i = index" class="customClass">
+            <td>
+                {{this.data.order_id}}
+            </td>
+            <td>
+                {{ 'Trip_'+(i+1)}}
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0].loadingPoint;">
+                    {{item.load_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0].loadingPoint;">
+                    {{item.loading_point}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0].loadingPoint;">
+                    {{item.loading_person}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0].loadingPoint;">
+                    {{item.loading_person_no}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0].loadingPoint;">
+                    {{item.loading_date | date}}
+                </tr>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="div-span">
+    <span class="span-header">Unoading Points:</span>
+</div>
+<table class="requiredOne">
+    <thead style="background: #caa7c6;">
+        <th>Order Id</th>
+        <th>Trip Number</th>
+        <th>Unloading District</th>
+        <th>Unloading point</th>
+        <th>Unloading Person</th>
+        <th>Unloading Person Number</th>
+        <th>Unloading date</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of this.data.truck_details; let i = index" class="customClass">
+            <td>
+                {{this.data.order_id}}
+            </td>
+            <td>
+                {{ 'Trip_'+(i+1)}}
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[1].unloadingPoint;">
+                    {{item.unload_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[1].unloadingPoint;">
+                    {{item.unloading_point}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[1].unloadingPoint;">
+                    {{item.unloading_person}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[1].unloadingPoint;">
+                    {{item.unloading_person_no}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[1].unloadingPoint;">
+                    {{item.unloading_date | date}}
+                </tr>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+<div class="div-span">
+    <span class="span-header">Bidding Date & Time:</span>
+</div>
+    <table class="requiredOne">
+        <thead style="background: #b7c1ca;">
+            <th>bidding Date</th>
+            <th>bidding Time</th>
+        </thead>
+        <tbody style="text-align: center; ">
+            <tr *ngFor="let item of [this.data]; let i = index" class="customClass">
+                <td>
+                    {{this.data.bidding_date | date}}
+                </td>
+                <td>
+                    {{this.data.bidding_time}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+

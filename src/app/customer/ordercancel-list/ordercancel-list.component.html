@@ -1,0 +1,67 @@
+<div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%"
+      fxLayoutAlign="flex-start" style="margin: 1%;" class="example-card-div">
+      <mat-card *ngFor="let orderCancel of orderCancelListObserver | async "
+        style="margin: 2em; padding-top: 0; padding-left: 0; padding-right: 0" class="example-card">
+        <mat-card-header style="background: #d0f0d6; padding: 20px ; border-radius:10px">
+          <button mat-icon-button matTooltip="Store" class="btt" (click)="orderCancelUndo(orderCancel.order_id)">
+            <mat-icon style="font-size: 14px;">undo</mat-icon>
+          </button>
+
+          <div mat-card-avatar class="example-header-image"></div>
+
+          <mat-card-title style="font-size: 12px;font-weight: bold;">
+            <p>Customer Name: {{orderCancel.name}} </p>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <div fxLayout="column" fxLayoutGap="10px" style="margin: 10px;">
+            <div fxLayout="row" fxLayoutGap="3px">
+              <div style="text-align: left;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                  <g id="Group_13" data-name="Group 13" transform="translate(599 8.43)">
+                    <g id="Group_12" data-name="Group 12" transform="translate(-599 -8.43)">
+                      <circle id="Ellipse_4" data-name="Ellipse 4" cx="8.451" cy="8.451" r="8.451"
+                        transform="translate(1.549 1.549)" fill="#1138f7" />
+                      <path id="Path_26" data-name="Path 26"
+                        d="M-589-8.43a10.012,10.012,0,0,0-10,10,10.011,10.011,0,0,0,10,10,10.011,10.011,0,0,0,10-10A10.011,10.011,0,0,0-589-8.43Zm0,19.225a9.225,9.225,0,0,1-9.225-9.225A9.226,9.226,0,0,1-589-7.655a9.226,9.226,0,0,1,9.225,9.225A9.225,9.225,0,0,1-589,10.8Z"
+                        transform="translate(599 8.43)" fill="#1138f7" />
+                    </g>
+                    <path id="Path_27" data-name="Path 27"
+                      d="M-451.588,175.011a.774.774,0,0,1-1.092,0L-456,171.688l-3.323,3.323a.775.775,0,0,1-1.092-.084.774.774,0,0,1,0-1.008l3.873-3.873a.774.774,0,0,1,1.092,0l3.873,3.873A.774.774,0,0,1-451.588,175.011Z"
+                      transform="translate(-132.989 -171.288)" fill="#fff" />
+                  </g>
+                </svg>
+              </div>
+              <div> Order Id: {{orderCancel.order_id}}</div>
+
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="3px">
+
+              <div style="text-align: left;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                  <g id="Group_14" data-name="Group 14" transform="translate(-581 9.57) rotate(180)">
+                    <g id="Group_12" data-name="Group 12" transform="translate(-601 -10.43)">
+                      <circle id="Ellipse_4" data-name="Ellipse 4" cx="8.451" cy="8.451" r="8.451"
+                        transform="translate(1.549 1.549)" fill="#2fab46" />
+                      <path id="Path_26" data-name="Path 26"
+                        d="M-589-8.43a10.012,10.012,0,0,0-10,10,10.011,10.011,0,0,0,10,10,10.011,10.011,0,0,0,10-10A10.012,10.012,0,0,0-589-8.43Zm0,19.226a9.225,9.225,0,0,1-9.225-9.225A9.225,9.225,0,0,1-589-7.655a9.226,9.226,0,0,1,9.225,9.225A9.225,9.225,0,0,1-589,10.8Z"
+                        transform="translate(599 8.43)" fill="#2fab46" />
+                    </g>
+                    <path id="Path_27" data-name="Path 27"
+                      d="M-453.391,173.973a.619.619,0,0,1-.874,0l-2.658-2.658-2.658,2.658a.62.62,0,0,1-.874-.068.619.619,0,0,1,0-.806l3.1-3.1a.619.619,0,0,1,.874,0l3.1,3.1A.619.619,0,0,1-453.391,173.973Z"
+                      transform="translate(-134.07 -172.68)" fill="#fff" />
+                  </g>
+                </svg>
+
+              </div>
+              <div> Order Id: {{orderCancel.phone}}</div>
+            </div>
+          </div>
+
+
+        </mat-card-content>
+      </mat-card>
+    </div>

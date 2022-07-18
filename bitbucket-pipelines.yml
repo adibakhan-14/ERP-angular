@@ -1,0 +1,21 @@
+image: amazon/aws-cli
+
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - aws s3 --region "ap-southeast-1" sync --delete dist/truckload s3://truckload.trukiot.com
+    staging:
+      - step:
+          script:
+            - aws s3 --region "ap-southeast-1" sync --delete dist/truckload s3://staging.streatlogistics.trukiot.com
+    test:
+      - step:
+          script:
+            - aws s3 --region "ap-southeast-1" sync --delete dist/truckload s3://test.streatlogistics.trukiot.com
+
+    prod:
+      - step:
+          script:
+            - aws s3 --region "ap-southeast-1" sync --delete dist/truckload s3://prod.streatlogistics.trukiot.com

@@ -1,0 +1,205 @@
+<div fxLayout="row" fxLayoutAlign="space-between start">
+
+    <mat-card class="card-container" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)">
+
+        <div class="btn-group flex-wrap" data-toggle="buttons">
+            <button mat-raised-button (click)="customerAdd()" matTooltip="Add Customer" matTooltipPosition="above">Customer</button>
+            <button mat-raised-button matTooltipPosition="above" (click)="poductAdd()" matTooltip="Add Product">Add Product</button>
+
+            <button mat-raised-button (click)="orderAdd()" matTooltip="Trip Place" matTooltipPosition="above">Trip Place</button>
+            <button mat-raised-button matTooltipPosition="above" (click)="vendorAdd()" matTooltip="Add Truck Owner">Truck Partner</button>
+
+
+
+            <button mat-raised-button matTooltipPosition="above" (click)="truckAdd()" matTooltip="Add Truck">
+
+
+        Truck</button>
+            <!-- <button mat-raised-button (click)="employeeAdd()" matTooltip="Add Employee" matTooltipPosition="above">
+
+        Employee</button> -->
+
+
+
+            <button mat-raised-button (click)="driverAdd()" matTooltip="Add Customer" matTooltipPosition="above">
+
+        Driver</button>
+
+        </div>
+        <form class="autocomplete" style="float: right;">
+            <mat-form-field class="autocomplete-width">
+                <input type="text" placeholder="Search" aria-label="Number" matInput [formControl]="customerControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getcustomerId($event.option.value)'>
+                    <mat-option *ngFor="let option of filteredStates | async" [value]="option.customer_id">
+                        {{option.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+
+        <p style="font-weight: bold; font-size: 18px; font-family: Lato; padding: 20px 8px 8px 8px;">Orders</p>
+
+
+
+
+    </mat-card>
+</div>
+<mat-divider> </mat-divider>
+<mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate">
+</mat-progress-bar>
+
+<div fxLayout="column" class="orders-board-container">
+    <div fxLayout="row" class="item-group-container" fxLayoutAlign="space-between start" fxLayoutGap="15px">
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.ordersPlaced.bgColor" [style.color]="colors.ordersPlaced.color">
+                {{ status.ordersPlaced }} ({{ ordersPlaced.length }})
+            </div>
+        </div>
+
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.detailsCollected.bgColor" [style.color]="colors.detailsCollected.color">
+                {{ status.detailsCollected }} ({{ detailsCollected.length }})
+            </div>
+        </div>
+
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.orderConfirmed.bgColor" [style.color]="colors.orderConfirmed.color">
+                {{ status.orderConfirmed }} ({{ orderConfirmed.length }})
+            </div>
+        </div>
+
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.inProgress.bgColor" [style.color]="colors.inProgress.color">
+                {{ status.inProgress }} ({{ inProgress.length }})
+            </div>
+        </div>
+
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.consignmentDone.bgColor" [style.color]="colors.consignmentDone.color">
+                {{ status.consignmentDone }} ({{ consignmentDone.length }})
+            </div>
+        </div>
+    </div>
+
+    <!--start card design -->
+    <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="15px">
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div [id]="'ordersPlaced'" class="item-container" cdkDropList #ordersPlacedList="cdkDropList" [cdkDropListData]="ordersPlaced" [cdkDropListConnectedTo]="[detailsCollectedList]" (cdkDropListDropped)="drop($event)">
+                <div class="item" cdkDrag *ngFor="let item of ordersPlaced" style="color: black; background-color: white;border: 1px solid #E7E5E5;
+        " [style.color]="colors">
+                    <orders-board-item [order]="item"></orders-board-item>
+                    <div class="icon-container">
+                        <div style="text-align: center;"></div>
+                        <div class="avatar-inprogress-div" fxLayoutGap="5px">
+                            <button mat-raised-button color="details" (click)="orderDetailShow(item)">Details
+              </button>
+                        </div>
+                        <div class="avatar-inprogress-div" fxLayoutGap="4px">
+                            <button mat-raised-button color="delete" (click)="orderDetele(item)">
+                Delete
+              </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div [id]="'detailsCollected'" class="item-container" cdkDropList #detailsCollectedList="cdkDropList" [cdkDropListData]="detailsCollected" [cdkDropListConnectedTo]="[orderConfirmedList]" (cdkDropListDropped)="drop($event)">
+                <div class="item" cdkDrag style="color: black; background-color: white;  border: 1px solid #E7E5E5;
+        " [style.color]="colors" *ngFor="let item of detailsCollected">
+                    <orders-board-item [order]="item"></orders-board-item>
+                    <div class="icon-container">
+                        <div style="text-align: center;"></div>
+                        <div class="avatar-inprogress-div" fxLayoutGap="5px">
+                            <button mat-raised-button color="details" (click)="orderDetailShow(item)">
+                Details
+              </button>
+                        </div>
+                        <div class="avatar-inprogress-div" fxLayoutGap="4px">
+                            <button mat-raised-button color="delete" (click)="orderDetele(item)">
+                Delete
+              </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div [id]="'orderConfirmed'" class="item-container" cdkDropList #orderConfirmedList="cdkDropList" [cdkDropListData]="orderConfirmed" [cdkDropListConnectedTo]="[inProgressList]" (cdkDropListDropped)="drop($event)">
+                <div class="item" cdkDrag *ngFor="let item of orderConfirmed" style="color: black; background-color: white;  border: 1px solid #E7E5E5;
+        " [style.color]="colors">
+                    <orders-board-item [order]="item"></orders-board-item>
+                    <div class="icon-container">
+                        <div style="text-align: center;"></div>
+                        <div class="avatar-inprogress-div" fxLayoutGap="5px">
+                            <button mat-raised-button color="details" (click)="orderDetailShow(item)">
+                Details
+              </button>
+                        </div>
+
+                        <div class="avatar-inprogress-div" fxLayoutGap="4px">
+                            <button mat-raised-button color="delete" (click)="orderDetele(item)">
+                Delete
+              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div [id]="'inProgress'" class="item-container" cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress" [cdkDropListConnectedTo]="[consignmentDoneList]" (cdkDropListDropped)="drop($event)" cdkDragDisabled="false">
+                <div class="item" cdkDrag *ngFor="let item of inProgress" style="color: black; background-color: white;border: 1px solid #E7E5E5;
+        " [style.color]="colors">
+                    <orders-board-item [order]="item" (click)="onClickEvent(item)"></orders-board-item>
+                    <div class="icon-container">
+                        <div style="text-align: center;"></div>
+                        <div class="avatar-inprogress-div" fxLayoutGap="5px">
+                            <button mat-raised-button color="details" (click)="onClickEvent(item)">
+                Details
+              </button>
+
+                        </div>
+
+                        <div class="avatar-inprogress-div" fxLayoutGap="4px">
+                            <button mat-raised-button color="delete" (click)="orderDetele(item)">
+                Delete
+              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div fxFlex="20%" fxFlex.xs="155px" fxFlex.sm="155px" fxFlex.md="220px">
+            <div [id]="'consignmentDone'" class="item-container" cdkDropList #consignmentDoneList="cdkDropList" (cdkDropListDropped)="drop($event)">
+                <div class="item" cdkDrag *ngFor="let item of consignmentDone" style="color: black; background-color: white;   border: 1px solid #E7E5E5;
+        " [style.color]="colors">
+                    <orders-board-item [order]="item"></orders-board-item>
+                    <div class="icon-container">
+                        <div style="text-align: center;"></div>
+                        <div class="avatar-inprogress-div" fxLayoutGap="5px">
+                            <button mat-raised-button color="details" (click)="orderDetailShow(item)">
+                Details
+              </button>
+                        </div>
+
+                        <div class="avatar-inprogress-div" fxLayoutGap="4px">
+                            <button mat-raised-button color="delete" (click)="orderDetele(item)">
+                Delete
+              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--end card design -->
+</div>

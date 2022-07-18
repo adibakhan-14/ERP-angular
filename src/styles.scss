@@ -1,0 +1,49 @@
+
+//new
+a { cursor: pointer; }
+
+// .app-container {
+//     min-height: 320px;
+//     overflow: hidden;
+// }
+
+// .btn-delete-user {
+//     width: 40px;
+//     text-align: center;
+//     box-sizing: content-box;
+// }
+
+//own
+.snackbar-container {
+  background-color: #ffffff;
+  color: #212121;
+  word-break: break-word;
+  z-index: 999999;
+}
+
+.snackbar-container.success {
+  border: 3px solid #4CAF50;
+}
+
+.snackbar-container.danger {
+  border: 3px solid #EA4335;
+}
+
+.service-confirmation-dialog-list {
+  margin-top: 5px;
+  list-style: square;
+  font-size: 13px;
+  margin-left: 25px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+ }
+ .mat-dialog-container{
+
+  background-color:#F7F5F5;
+ }
+
+
+
+ 

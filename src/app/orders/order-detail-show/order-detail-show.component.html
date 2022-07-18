@@ -1,0 +1,93 @@
+<div class="card-container">
+    <h1 mat-dialog-title>{{ data.name }} Order Info</h1>
+</div>
+
+
+
+<div fxLayout="row" fxLayoutAlign="space-evenly">
+    <div fxFlex="37" class="example-card">
+        <div class="card-design">
+            <h3 style="font-weight: 500">Order Info</h3>
+        </div>
+
+        <div id="design">
+            <mat-list style="height: 240px">
+                <mat-list-item style="font-family: lato; font-size: 12px">
+                    Customer ID: {{ boardItem.customer_id }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item style="font-family: lato; font-size: 12px">
+                    Customer Name: {{ boardItem?.name }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item style="font-family: lato; font-size: 12px">
+                    Customer Type: {{ boardItem?.customer_type }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item style="font-family: lato; font-size: 12px">
+                    Customer Phone: {{ boardItem?.phone }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item style="font-family: lato; font-size: 12px">
+                    Order Status: {{ boardItem?.status }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item style="font-family: lato; font-size: 12px">
+                    Order Id: {{ boardItem?.order_id }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item style="font-family: lato; font-size: 12px">
+                    Customer Email: {{ boardItem?.email }}
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+    <div fxFlex="37" class="example-card">
+        <div class="card-design">
+            <h3 style="font-weight: 500">Trucks</h3>
+        </div>
+        <div fxLayout="row">
+            <table class="customers" [hidden]="boardItem.truck_details.length === 0">
+                <thead>
+                    <!-- <th>Serial No.</th> -->
+                    <th>Trip Number</th>
+                    <th>Truck type</th>
+                    <th>Truck length</th>
+                    <th>Truck capacity</th>
+                    <th>Loading District</th>
+                    <th>Truck loading Point</th>
+                    <th>Truck loading date</th>
+                    <th>Unloading District</th>
+                    <th>Truck unloading point</th>
+                    <th>Product</th>
+                    <th>Product Weight</th>
+                    <th>Truck fare</th>
+                    <th>Trip Edit</th>
+                </thead>
+
+
+                <tbody style="text-align: center">
+                    <tr *ngFor="let item of boardItem.truck_details; let i = index">
+                        <!-- <td>{{ item?.serial_no }}</td> -->
+                        <td>{{ item?.trip_number}}</td>
+                        <td>{{ item?.type }}</td>
+                        <td>{{ item?.length }}</td>
+                        <td>{{ item?.weight }}</td>
+                        <td>{{item?.load_district}}</td>
+                        <td>{{ item?.truck_loading_point }}</td>
+                        <td>{{ item?.truck_loading_date }}</td>
+                        <td>{{item?.unload_district}}</td>
+                        <td>{{ item?.truck_unloading_point}}</td>
+                        <td>{{item?.product_name}}</td>
+                        <td>{{item?.product_weight}}</td>
+
+                        <td>{{ item?.fare}}</td>
+                        <td>
+                            <mat-icon (click)="orderEdit(item,i)" [mat-dialog-close]>create</mat-icon>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

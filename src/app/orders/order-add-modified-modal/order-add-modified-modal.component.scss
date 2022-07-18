@@ -1,0 +1,80 @@
+.continer {
+    padding: 50px;
+    background-color: white;
+    background-size: cover;
+    height: 100%;
+}
+
+h2 {
+    font-weight: 500;
+    border: #00457E;
+    height: 70px;
+}
+
+.truckInfo {
+    background-color: #D7E9F8;
+}
+
+.loadInfo {
+    background-color: #D6F7E1;
+}
+
+.unloadInfo {
+    background-color: #FFEDDB;
+}
+
+.prodInfo {
+    background-color: #E7E2F8;
+}
+
+.biddInfo {
+    background-color: #C0EAEA;
+}
+
+.title {
+    font-family: 'Manrope';  
+}
+
+.btnU {
+    background: #00457E;
+    color: #FFFFFF;
+    margin-left: 2%;
+    height: 40px;
+    width: 280px;
+}
+
+// .input-design {
+//     width: 422px;
+//     margin: 10px;
+//     // border: 1px solid #E7E5E5;
+// }
+// button {
+//     width: 176px;
+//     height: 32px;
+//     margin-left: 2%;
+// }
+
+.mat-raised-button.mat-success {
+    font-size: Lato;
+    font-size: 12px;
+    align-content: center;
+    color: white;
+    background-color: #00457E;
+    width: 120px;
+    height: 40px;
+  }
+
+//   .horizontal_line {
+//     background-color: green;
+//     width: 90%;
+//     height: 5px;
+//     border-top: 5px dotted black;
+//     line-height: 80%;
+// }
+
+.line {
+    border-bottom: 2px solid #D7E9F8;
+    width: 42%;
+    height: 1px;
+    padding-top: 8px;
+}

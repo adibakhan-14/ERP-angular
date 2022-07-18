@@ -1,0 +1,53 @@
+<div fxLayout="column" fxLayoutAlign="space-around none" fxFlex="100%">
+
+
+  <mat-card style="height: 40px;border-radius:0px; margin: 20px; ">
+
+
+    <button mat-raised-button matTooltipPosition="above" matTooltip="Back"   (click)="backButton()" style="float: right;"
+    >
+
+        Back</button>
+
+        <p style="font-weight: bold; font-size: 18px; font-family: Lato; padding: 20px 8px 8px 8px;"> Customer Dashboard</p>
+
+
+
+  </mat-card>
+
+
+
+  <!-- <div fxLayout="row" fxLayoutAlign="end">
+    <div fxLayout="row">
+      <button
+        class="btn"
+        mat-mini-fab
+        color="primary"
+        (click)="targetValueAdd()"
+        matTooltip="Add Target"
+        matTooltipPosition="above"
+      >
+      <mat-icon>arrow_circle_down</mat-icon>
+    </button>
+    </div>
+  </div> -->
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="space-around center">
+    <div fxFlex="48%">
+      <app-gross-profit></app-gross-profit>
+    </div>
+    <div fxFlex="48%">
+      <app-completed-trip></app-completed-trip>
+    </div>
+
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="space-around center"
+    style="margin-top: 10px;">
+    <div fxFlex="48%">
+      <app-trip></app-trip>
+    </div>
+    <div fxFlex="48%">
+      <app-trip-history></app-trip-history>
+    </div>
+  </div>
+

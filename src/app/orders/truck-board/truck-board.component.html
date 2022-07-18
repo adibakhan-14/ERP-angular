@@ -1,0 +1,139 @@
+<h2 style="background-color:#1BBDB8">In Progress</h2>
+<mat-divider> </mat-divider>
+<mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate">
+</mat-progress-bar>
+<br>
+<ng-template #confirmForCancelTruck>
+  <h3>Are You Sure to Park This Job Card ??!!</h3>
+</ng-template>
+<div style="
+    margin-bottom: 5px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    margin-top: -20px;
+  " fxLayoutGap="15px">
+  <div [id]="'cancel'" class="drop" cdkDropList #drpList="cdkDropList" [cdkDropListData]="dropData"
+    [cdkDropListConnectedTo]="[drpList]" (cdkDropListDropped)="drop($event)">
+    <div class="inside-drop-div">
+      <img class="center" src="../../../assets/images/bin.png" matTooltip="Drop Service Card"
+        style="cursor: pointer;" />
+    </div>
+  </div>
+
+
+</div>
+<br>
+<br>
+<!--
+  column status design start -->
+<div fxLayout="column" class="orders-board-container">
+  <div fxLayout="row" class="item-group-container" fxLayoutAlign="space-between start" fxLayoutGap="10px">
+    <div fxFlex="25%" fxFlex.xs="155px" fxFlex.sm="155px">
+      <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.pending.bgColor"
+        [style.color]="colors.pending.color">
+        <!-- <mat-checkbox class="example-margin"
+      (change)="checkPending()"
+      ></mat-checkbox> -->
+        {{ status.pending }} ({{ pending.length }})
+
+      </div>
+
+    </div>
+
+    <div fxFlex="25%" fxFlex.xs="155px" fxFlex.sm="155px">
+      <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.loadCompleted.bgColor"
+        [style.color]="colors.loadCompleted.color">
+        <!-- <mat-checkbox class="example-margin"
+        (change)="checkLoadComplete()"
+        ></mat-checkbox> -->
+        {{ status.loadCompleted }} ({{ loadCompleted.length }})
+      </div>
+    </div>
+
+    <div fxFlex="25%" fxFlex.xs="255px" fxFlex.sm="155px">
+      <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.inTransit.bgColor"
+        [style.color]="colors.inTransit.color">
+        <!-- <mat-checkbox class="example-margin"
+        (change)="checkInTransit()"
+        ></mat-checkbox> -->
+        {{ status.inTransit }} ({{ inTransit.length }})
+      </div>
+    </div>
+
+    <div fxFlex="25%" fxFlex.xs="255px" fxFlex.sm="155px">
+      <div class="item-group" fxFlexAlign="center" [style.background-color]="colors.unloadComplete.bgColor"
+        [style.color]="colors.unloadComplete.color">
+        <!-- <mat-checkbox class="example-margin"
+        (change)="checkUnLoadComplete()"
+        ></mat-checkbox> -->
+        {{ status.unloadComplete }} ({{ unloadComplete.length }})
+      </div>
+    </div>
+  </div>
+  <!--start card design -->
+  <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="15px">
+    <div fxFlex="25%" fxFlex.xs="155px" fxFlex.sm="155px">
+      <div [id]="'pending'" class="item-container" cdkDropList #pendingList="cdkDropList" [cdkDropListData]="pending"
+        [cdkDropListConnectedTo]="[loadCompleteList,drpList]" (cdkDropListDropped)="drop($event)">
+        <div class="item" cdkDrag *ngFor="let item of pending"  style="color: black; background-color: white;border: 1px solid #E7E5E5;
+        "
+          [style.color]="colors">
+          <trucks-board-item [truck]="item" (onDatePicked)="doSomething($event)" [data]="data"></trucks-board-item>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25%" fxFlex.xs="155px" fxFlex.sm="155px">
+      <div [id]="'loadCompleted'" class="item-container" cdkDropList #loadCompleteList="cdkDropList"
+        [cdkDropListData]="loadCompleted" [cdkDropListConnectedTo]="[inTransitList,pendingList,drpList]"
+        (cdkDropListDropped)="drop($event)">
+        <div class="item" cdkDrag *ngFor="let item of loadCompleted"
+        style="color: black; background-color: white;border: 1px solid #E7E5E5;
+        "
+          [style.color]="colors">
+          <trucks-board-item [truck]="item"></trucks-board-item>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25%" fxFlex.xs="155px" fxFlex.sm="155px">
+      <div [id]="'inTransit'" class="item-container" cdkDropList #inTransitList="cdkDropList"
+        [cdkDropListData]="inTransit" [cdkDropListConnectedTo]="[unLoadCompleteList,loadCompleteList,drpList]"
+        (cdkDropListDropped)="drop($event)">
+        <div class="item" cdkDrag *ngFor="let item of inTransit" style="color: black; background-color: white;border: 1px solid #E7E5E5;
+        "
+          [style.color]="colors">
+          <trucks-board-item [truck]="item"></trucks-board-item>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25%" fxFlex.xs="255px" fxFlex.sm="155px">
+      <div [id]="'unloadComplete'" class="item-container" cdkDropList [cdkDropListConnectedTo]="[inTransitList]"
+        #unLoadCompleteList="cdkDropList" [cdkDropListData]="unloadComplete" (cdkDropListDropped)="drop($event)">
+        <div class="item" cdkDrag *ngFor="let item of unloadComplete"
+        style="color: black; background-color: white;border: 1px solid #E7E5E5;
+        "
+          [style.color]="colors">
+
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+            <trucks-board-item [truck]="item"></trucks-board-item>
+            <div>
+
+
+              <button mat-icon-button aria-label="Example icon button with a open in new tab icon"
+                (click)="releaseTruckModal(item)">
+                <mat-icon>remove_circle_outline</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--end card design -->
+
+</div>

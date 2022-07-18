@@ -1,0 +1,305 @@
+<!-- <div class="card-container">
+
+    <h1 mat-dialog-title>{{data.name}} Order Confirmed</h1>
+
+</div>
+
+<mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate"></mat-progress-bar>
+
+<p></p>
+
+<table class="requiredOne">
+    <thead>
+        <th>Type</th>
+        <th>Length</th>
+        <th>Weight</th>
+        <th>Loading point</th>
+        <th>Unloading point</th>
+        <th>Loading date</th>
+        <th>Fare</th>
+        <th>Partner Search</th>
+        <th>Truck Search</th>
+        <th>Driver Search</th>
+
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of truckTypes; let i = index">
+            <td>{{ item?.type }} </td>
+
+
+            <td *ngFor="let item of typeOfTrucks; let i = index">{{ item?.length }} ft</td>
+            <td *ngFor="let item of typeOfTrucks; let i = index">{{ item?.weight }}</td>
+            <td>{{ item?.loading_point}}</td>
+            <td >{{ item?.unloading_point }}</td>
+            <td>{{ item?.loading_date }}</td>
+            <td>{{ item?.fare }}</td>
+            <td>
+                <form class="example-form">
+                    <input type="search" placeholder="Partner" aria-label="State" type="text" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid#E7E5E5 ;outline: none;" matInput [formControl]="vendorControl" [matAutocomplete]="autoVendor">
+
+                    <mat-autocomplete #autoVendor="matAutocomplete" (optionSelected)="onSelectVendor($event.option.value,item,i)">
+
+
+                        <mat-option *ngFor="let vendor of vendorfilteredStates | async" [value]="vendor.vendor_id">
+                            <span>{{ vendor.vendor_name }}</span> |
+                            <small> {{ vendor.vendor_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+                </form>
+
+            </td>
+            <td>
+
+                <form class="example-form">
+                    <input type="search" placeholder="Truck reg" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid#E7E5E5 ;outline: none;" matInput [formControl]="customerControl" [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectCustomer($event.option.value,item,i)">
+
+
+                        <mat-option *ngFor="let state of filteredStates | async" [value]="state.trip_id">
+                            <span>{{ state.truck_reg }}</span> |
+                            <small> {{ state.trip_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+                </form>
+
+
+            </td>
+            <td>
+
+
+                <form class="example-form">
+                    <input type="search" placeholder="Driver" aria-label="State" type="text" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid#E7E5E5 ;outline: none;" matInput [formControl]="driverControl" [matAutocomplete]="autos">
+
+                    <mat-autocomplete #autos="matAutocomplete" (optionSelected)="onSelectDriver($event.option.value,item,i)">
+
+
+                        <mat-option *ngFor="let driver of driverfilteredStates | async" [value]="driver.driver_id">
+                            <span>{{ driver.name }}</span> |
+                            <small> {{ driver.driver_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+                </form>
+
+
+
+
+            </td>
+
+    </tbody>
+</table>
+
+
+
+<div fxLayoutAlign="center center">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+    CANCEL
+  </button>
+    <button (click)="onSubmit()" mat-raised-button color="success" [disabled]="asyncService?.isLoading | async">
+    Confirm Order
+  </button>
+
+</div> -->
+
+
+
+<!-- <div class="card-container">
+    <h1 mat-dialog-title>{{data.name}} Order Confirm</h1>
+</div>
+<mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate"></mat-progress-bar>
+<p></p>
+<table class="requiredOne">
+    <thead>
+        <th>Trip Number</th>
+        <th>Type</th>
+        <th>Loading District</th>
+        <th>Unloading District</th>
+        <th>Loading date</th>
+        <th>Fare</th>
+        <th>Partner</th>
+        <th>Partner's Fare</th>
+        <th>Truck Reg</th>
+        <th>Driver</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of this.data.truck_details; let i = index" class="customClass">
+            <td>
+                {{ 'Trip_'+(i+1)}}
+            </td>
+            <td>
+                {{item.type}}
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0]['loadingPoint'];">
+                    {{item.load_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[1]['unloadingPoint'];">
+                    {{item.unload_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0]['loadingPoint'];">
+                    {{item.loading_date | date}}
+                </tr>
+            </td>
+            <td>
+                {{item.fare}}
+            </td>
+            <td>
+                <form class="example-form">
+                    <input type="search" placeholder="Partner" aria-label="State" type="text" style=" width: 100px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput [formControl]="vendorControl" [matAutocomplete]="autoVendor">
+
+                    <mat-autocomplete #autoVendor="matAutocomplete" (optionSelected)="onSelectVendor($event.option.value,item,i)">
+
+
+                        <mat-option *ngFor="let vendor of vendorfilteredStates | async" [value]="vendor.vendor_id">
+                            <span>{{ vendor.vendor_name }}</span> |
+                            <small> {{ vendor.vendor_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+                </form>
+            </td>
+            <td>
+                <form  class="example-form" >
+                    <input type="text" placeholder="Partner's Fare" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput [formControl]="vendor_fare" required autocomplete="off">
+                </form>
+            </td>
+            <td>
+                <form class="example-form">
+                    <input type="search" placeholder="Truck reg" aria-label="State" style=" width: 100px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput [formControl]="customerControl" [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectCustomer($event.option.value,item,i)">
+
+
+                        <mat-option *ngFor="let state of filteredStates | async" [value]="state.trip_id">
+                            <span>{{ state.truck_reg }}</span> |
+                            <small> {{ state.trip_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+                </form>            
+            </td>
+            <td>
+                <form class="example-form">
+                    <input type="search" placeholder="Driver" aria-label="State" type="text" style=" width: 100px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput [formControl]="driverControl" [matAutocomplete]="autos">
+
+                    <mat-autocomplete #autos="matAutocomplete" (optionSelected)="onSelectDriver($event.option.value,item,i)">
+
+
+                        <mat-option *ngFor="let driver of driverfilteredStates | async" [value]="driver.driver_id">
+                            <span>{{ driver.name }}</span> |
+                            <small> {{ driver.driver_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div fxLayoutAlign="center center" style="height: 150px;">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+    CANCEL
+  </button>
+    <button (click)="onSubmit()" mat-raised-button color="success" [disabled]="asyncService?.isLoading | async">
+    Confirm Order
+  </button>
+</div> -->
+
+<div class="card-container">
+    <h1 mat-dialog-title>{{data.name}} Order Confirm</h1>
+</div>
+<mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate"></mat-progress-bar>
+<p></p>
+<table class="requiredOne">
+    <thead>
+        <th>Trip Number</th>
+        <th>Type</th>
+        <th>Loading District</th>
+        <th>Unloading District</th>
+        <th>Loading date</th>
+        <th>Fare</th>
+        <th>Partner</th>
+        <th>Partner's Fare</th>
+        <th>Truck Reg</th>
+        <th>Driver</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let group of groups; index as i" class="customClass">
+            <ng-container [formGroup]="group">
+            <td>
+                {{ 'Trip_'+(i+1)}}
+            </td>
+            <td>
+                {{data.truck_details[i].type}}
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0]['loadingPoint'];">
+                    {{item.load_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[1]['unloadingPoint'];">
+                    {{item.unload_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details[i].destination[0]['loadingPoint'];">
+                    {{item.loading_date | date}}
+                </tr>
+            </td>
+            <td>
+                {{data.truck_details[i].fare}}
+            </td>
+            <td>
+                    <input type="search" placeholder="Partner" aria-label="State" type="text" style=" width: 100px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput formControlName="vendorControl" [matAutocomplete]="autoVendor">
+
+                    <mat-autocomplete #autoVendor="matAutocomplete" (optionSelected)="onSelectVendor($event.option.value,data.truck_details[i],i)">
+
+
+                        <mat-option *ngFor="let vendor of vendorfilteredStates | async" [value]="vendor.vendor_id">
+                            <span>{{ vendor.vendor_name }}</span> |
+                            <small> {{ vendor.vendor_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+            </td>
+            <td>
+                    <input type="text" placeholder="Partner's Fare" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput formControlName="vendor_fare" required autocomplete="off">
+            </td>
+            <td>
+                    <input type="text" placeholder="Truck reg" aria-label="State" style=" width: 100px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput formControlName="customerControl"  [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectCustomer($event.option.value,data.truck_details[i],i)">
+
+
+                        <mat-option *ngFor="let state of filteredStates | async" [value]="state.trip_id">
+                            <span>{{ state.truck_reg }}</span> |
+                            <small> {{ state.trip_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+            </td>
+            <td>
+                    <input type="search" placeholder="Driver" aria-label="State" type="text" style=" width: 100px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput formControlName="driverControl"  [matAutocomplete]="autos">
+
+                    <mat-autocomplete #autos="matAutocomplete" (optionSelected)="onSelectDriver($event.option.value,data.truck_details[i],i)">
+
+
+                        <mat-option *ngFor="let driver of driverfilteredStates | async" [value]="driver.driver_id">
+                            <span>{{ driver.name }}</span> |
+                            <small> {{ driver.driver_id }}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+            </td>
+        </ng-container>
+        </tr>
+    </tbody>
+</table>
+<div fxLayoutAlign="center center" style="height: 150px;">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+    CANCEL 
+  </button>
+    <button (click)="onSubmit()" mat-raised-button color="success" [disabled]="!this.tableForm.valid">
+    Confirm
+  </button>
+</div>
+<!-- <button (click)="checker()" mat-raised-button color="success"> -->

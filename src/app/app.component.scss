@@ -1,0 +1,19 @@
+.central-loader {
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.2);
+    z-index: 1050;
+}
+
+.central-loader > div {
+    height: 42px;
+    line-height: 40px;
+    width: 200px;
+    text-align: center;
+    border: 2px #faf2cc solid;
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    margin: auto;
+}

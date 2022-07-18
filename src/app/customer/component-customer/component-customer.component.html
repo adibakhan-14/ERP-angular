@@ -1,0 +1,56 @@
+
+<div class="fixed">
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side" class="sidenav-color">
+    <div class="btn-group-list">
+      <button (click)="showOrderCancelList()">Cancel Order List</button>
+      <!-- <button (click)="showCustomerList()">Show Customer List</button> -->
+      <!-- <button (click)="showTruckList()">Show Truck List</button> -->
+      <!-- <button (click)="showVendorList()">Show Partner List</button> -->
+      <button (click)="showOrderHistory()">Order History List</button>
+      <!-- <button (click)="showDriverList()">Driver List</button> -->
+      <button (click)="downloadPDF()">Order report Download</button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+
+
+
+
+    <ng-template [ngIf]="isCheckTruckList">
+
+      <app-truck-list-modal></app-truck-list-modal>
+
+    </ng-template>
+
+    <ng-template [ngIf]="isCheckOrderHistoryList">
+
+      <app-order-history></app-order-history>
+
+    </ng-template>
+
+    <!-- <ng-template [ngIf]="isCHeckVendorHistoryList">
+
+      <app-vendor-history></app-vendor-history>
+
+    </ng-template> -->
+    <!-- <ng-template [ngIf]="isCheckCustomerList">
+      <app-customer-list></app-customer-list>
+
+    </ng-template> -->
+
+
+    <ng-template [ngIf]="isCheckOrderCancelList">
+      <app-ordercancel-list></app-ordercancel-list>
+
+    </ng-template>
+
+
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+</div>

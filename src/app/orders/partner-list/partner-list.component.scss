@@ -1,0 +1,68 @@
+// table {
+//   width: 100%;
+//   padding: 20px 20px 20px;
+//   th {
+
+//     font-size: 14px;
+//     font-family: Lato;
+//     font-weight: bold;
+//     background-color: #1bbdbb;
+
+
+//   }
+
+// }
+.mat-form-field {
+    // font-size: 14px;
+    width: 98%;
+    padding-left: 1%;
+  }
+  .example-container {
+    position: relative;
+    min-height: 200px;
+    margin: 15px;
+
+  }
+
+  .example-table-container {
+    max-height: 450px;
+    overflow: auto;
+  }
+
+  table {
+    width: 100%;
+    font-family: Lato;
+
+
+  }
+
+  .example-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+    .mat-header-cell {
+      font-size: 14px;
+      font-family: Lato;
+      font-weight: bold;
+      background-color: #1bbdbb;
+      color: white;
+      padding-left: 50px;
+    }
+
+  .mat-cell
+  {
+    padding-left: 50px;
+  }
+  .button{
+    background-color: #1bbdbb;
+  }

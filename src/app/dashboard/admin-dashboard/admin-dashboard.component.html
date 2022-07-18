@@ -1,0 +1,126 @@
+<div class="container">
+
+  <div class="Container">
+    <div>
+      <mat-card style="height: 40px;border-radius:0px; margin: 20px; ">
+        <!-- <button type="button" class="buttonSearch" (click)="showAllCustomer()">All
+        </button> -->
+
+        <!-- <div *ngIf="true">
+          <div *ngFor="let Customerlogo of Customerlogos">
+            <a [routerLink]="['/dashboard/customer-dashboard',Customerlogo.customerId]" [routerLinkActive]="['active']">
+              <button>{{Customerlogo.customerId}}</button>
+            </a>
+          </div>
+        </div> -->
+
+        <form class="example-form">
+          <input type="search" placeholder="Search Customer" aria-label="Number"
+            style=" width: 240px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;"
+            matInput [formControl]="customerControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getcustomerId($event.option.value)'>
+
+            <mat-option *ngFor="let option of filteredStates | async" [value]="option.customer_id"
+              [routerLink]="['/dashboard/customer-dashboard',option.customer_id]">
+              {{option.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </form>
+        <p style="font-weight: bold; font-size: 18px; font-family: Lato; padding: 20px 8px 8px 8px;">Dashboard</p>
+
+      </mat-card>
+    </div>
+    <div style="margin: 20px;">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="space-between center">
+        <mat-card class="status-card" (click)="goToOrders()">
+        <div fxLayout="row" fxLayoutGap="3%"><span class="dot">
+            <h1 class="status-card-text-cir">{{ordersPlaced}}</h1>
+          </span>
+          <h3 class="status-card-text">
+            Trip Placed
+          </h3>
+        </div>
+        </mat-card>
+
+        <mat-card class="status-card" (click)="goToOrders()">
+          <div fxLayout="row" fxLayoutGap="3%"><span class="dot">
+              <h1 class="status-card-text-cir">{{ detailsCollected}}</h1>
+            </span>
+            <h3 class="status-card-text">
+              Details Collected</h3>
+          </div>
+        </mat-card>
+        <mat-card class="status-card" (click)="goToOrders()">
+          <div fxLayout="row" fxLayoutGap="3%"><span class="dot">
+              <h1 class="status-card-text-cir">{{ orderConfirmed}}</h1>
+            </span>
+            <h3 class="status-card-text">
+              Order Confirmed</h3>
+          </div>
+        </mat-card>
+        <mat-card class="status-card" (click)="goToOrders()">
+          <div fxLayout="row" fxLayoutGap="3%"><span class="dot">
+              <h1 class="status-card-text-cir">{{loadPoint}}</h1>
+            </span>
+            <h3 class="status-card-text">
+              Load Point</h3>
+          </div>
+        </mat-card>
+        <mat-card class="status-card" (click)="goToOrders()">
+          <div fxLayout="row" fxLayoutGap="3%"><span class="dot">
+              <h1 class="status-card-text-cir">{{ inProgress}}</h1>
+            </span>
+            <h3 class="status-card-text">
+              In progress</h3>
+          </div>
+        </mat-card>
+        <mat-card class="status-card" (click)="goToOrders()">
+          <div fxLayout="row" fxLayoutGap="3%"><span class="dot">
+              <h1 class="status-card-text-cir">{{unloadPoint}}</h1>
+            </span>
+            <h3 class="status-card-text">
+              Unload Point</h3>
+          </div>
+        </mat-card>
+        <mat-card class="status-card" (click)="goToOrders()">
+          <div fxLayout="row" fxLayoutGap="3%"><span class="dot">
+              <h1 class="status-card-text-cir">{{ consignmentDone}}</h1>
+            </span>
+            <h3 class="status-card-text">
+              Trip Completed</h3>
+          </div>
+        </mat-card>
+
+        <!-- <button  mat-raised-button color="primary"
+        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        Action
+       </button>
+       <button  mat-raised-button color="primary"
+        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        Action
+       </button>
+       <button  mat-raised-button color="primary"
+        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        Action
+       </button>
+       <button  mat-raised-button color="primary"
+        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        Action
+       </button> -->
+      </div>
+    </div>
+    <div style="margin: 10px;">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="space-between center">
+
+        <div fxFlex="48.5%">
+          <app-admin-completed-trip></app-admin-completed-trip>
+
+        </div>
+        <div fxFlex="48.5%">
+          <app-total-completed-trip></app-total-completed-trip>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

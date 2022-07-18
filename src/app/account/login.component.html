@@ -1,0 +1,58 @@
+﻿﻿<div class="container">
+    <div class="container-fluid">
+        <div class="image-div" [style.height]="screenHeight + 'px'">
+            <img src="../../assets/images/login.png" />
+        </div>
+        <div class="login-div" [style.height]="screenHeight + 'px'">
+            <div class="form-feild-div">
+                <div class="insideForm">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="logo">
+                            <img src="../../assets/images/logo.png" />
+                        </div>
+                        <div class="inputField">
+                            <input class="Rectangle_25_et" type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" style="text-align: center" placeholder="Email" />
+
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div style="padding-right: 74px" *ngIf="f.username.errors.required">
+                                    Email is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inputField">
+                            <input class="Rectangle_25_et" type="password" formControlName="password" id="Rectangle_25_et" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" style="text-align: center" placeholder="Password" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div style="padding-right: 74px" *ngIf="f.password.errors.required">
+                                    Password is required
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <!-- <input class=" button-click" type="button" formControlName="password" style="text-align: center;"
+                  value="Login" /> -->
+
+                            <!-- <a routerLink="../register" class="">Register</a> -->
+
+
+                            <button class="button-click" id="button-click" mat-raised-button [class.spinner]="loading" [disabled]="loading">
+                  LOGIN
+                </button>
+                            <!--           <br />
+
+                            <a routerLink="../register" class="">Register</a>
+                            <br /> -->
+                            <!-- <a *ngif="checkForgetPassword" routerLink="../forget-password" class="">forget password</a> -->
+
+                        </div>
+                    </form>
+                    <a style="padding-right: 25px" routerLink="../forget-password" class="">Forgot password</a>
+
+                </div>
+                <div class="footerLogin">
+                    <p>@Copyright Era Info Tech Ltd.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+<p style="text-align: center;font-size: 20px;font-weight: bold;">Order Report</p>
+<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+  <div
+    fxFlex="0 1 calc(80% - 10px)"
+    fxFlex.lt-md="0 1 calc(100% - 10px)"
+    fxFlex.lt-sm="100%"
+    fxFlex.xs="100%"
+    fxLayoutGap="10px"
+  >
+    <mat-form-field appearance="fill" style="width: 30%">
+      <mat-label>Search Report</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Search Report"
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
+      <button
+        mat-button
+        mat-icon-button
+        matSuffix
+        (click)="onRemoveSerachFiled()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="onSelectReport($event.option.value)"
+      >
+        <mat-option
+          *ngFor="let report of filteredOptions | async"
+          [value]="report.id"
+        >
+          {{ report.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field
+      fxFlex="0 1 calc(20% - 10px)"
+      fxFlex.lt-md="0 1 calc(50% - 10px)"
+      fxFlex.sm="50%"
+      fxFlex.xs="50%"
+      appearance="fill"
+      *ngIf="reportId === 'customerWiseReport'"
+    >
+      <mat-label>Customer</mat-label>
+
+      <mat-select
+        placeholder="Customer"
+        (valueChange)="onCustomerSelected($event)"
+      >
+        <mat-option
+          *ngFor="let item of customers$ | async"
+          [value]="item?.customer_id"
+        >
+          {{ item?.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="reportId === 'customerWiseReport' || reportId === 'regularReport'"
+      fxFlex="0 1 calc(10% - 10px)"
+      fxFlex.lt-md="0 1 calc(50% - 10px)"
+      fxFlex.lt-sm="100%"
+      fxFlex.xs="100%"
+      appearance="fill"
+    >
+      <mat-label>From Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        placeholder="Date"
+        (dateChange)="fromDate($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="reportId === 'customerWiseReport' || reportId === 'regularReport'"
+      fxFlex="0 1 calc(10% - 10px)"
+      fxFlex.lt-md="0 1 calc(50% - 10px)"
+      fxFlex.lt-sm="100%"
+      fxFlex.xs="100%"
+      appearance="fill"
+    >
+      <mat-label>To Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker1"
+        placeholder="Date"
+        (dateChange)="toDate($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <button
+      type="button"
+      mat-icon-button
+      color="accent"
+      matTooltip="Search"
+      (click)="search()"
+    >
+      <i class="material-icons"> search </i>
+    </button>
+
+    <button
+      type="button"
+      mat-icon-button
+      color="accent"
+      [disabled]="!downloadFlag"
+      matTooltip="Download Pdf"
+      (click)="openPDF()"
+    >
+      <i class="material-icons"> system_update_alt </i>
+    </button>
+  </div>
+</div>
+
+<div style="margin-top: 200px;" mat-dialog-actions fxLayoutAlign="end end">
+  <button type="button"
+   mat-raised-button color="warn"
+   [mat-dialog-close]>
+    Close
+  </button>
+</div>

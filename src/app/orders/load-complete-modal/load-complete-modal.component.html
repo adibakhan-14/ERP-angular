@@ -1,0 +1,245 @@
+<!-- <div class="card-container">
+    <h1 mat-dialog-title>{{data.name}} (Order Confirmation)</h1>
+</div>
+<p></p>
+<table class="requiredOne">
+    <thead>
+        <th>Trip Number</th>
+        <th>Type</th>
+        <th>Length</th>
+        <th>Loading District</th>
+        <th>Loading point</th>
+        <th>Unloading District</th>
+        <th>Unloading point</th>
+        <th>Loading date</th>
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of [this.data]; let i = index" class="customClass">
+            <td>
+                {{item.trip_id}}
+            </td>
+            <td>
+                {{this.data.truck_details.truck_type}}
+            </td>
+            <td>
+                {{this.data.truck_details.truck_length.length}}
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details.loading_points;">
+                    {{item.loadingDistrict}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details.loading_points;">
+                    {{item.loadingPoint}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details.unloading_points;">
+                    {{item.unloadingDistrict}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details.unloading_points;">
+                    {{item.unloadingPoint}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.data.truck_details.loading_points;">
+                    {{item.loadingDate | date}}
+                </tr>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div fxLayoutAlign="center center" style="height: 150px;">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+        Cancel
+      </button>
+        <button (click)="onSubmit()" mat-raised-button color="success">
+        Confirm
+      </button>
+
+</div> -->
+
+<div class="card-container">
+    <h1 mat-dialog-title>{{ data.name }} (Order Confirmation)</h1>
+  </div>
+  <br />
+  <div>
+    <form [formGroup]="myFormTwo">
+      <mat-card class="loadInfo">
+      <div class='myDiv'>
+        <h2 style="margin-bottom: -40px">
+          Truck Info:
+        </h2>
+          <span> Truck Length: {{data.truck_details.truck_length.name}}</span>
+          <span> Truck Capacity: {{ data.truck_details.truck_length.weight}}</span>
+      </div>
+        <h2 style="margin-bottom: -40px">Loading Points:</h2>
+        <div
+          formArrayName="arrTwo"
+          *ngFor="
+            let a of myFormTwo.get('arrTwo')['controls'];
+            let i = index;
+            let productIndex = index
+          "
+         >
+          <div
+            [formGroupName]="productIndex"
+            fxLayout="row wrap"
+            fxLayoutGap="15px"
+            fxFlex="100%"
+            fxFlex.sm="100%"
+            fxLayout.lt-sm="column"
+            fxFlex.xs="100%"
+            fxLayoutAlign="flex-start"
+          >
+          <mat-form-field appearance="outline" fxFlex="15%">
+            <mat-label>Loading District</mat-label>
+            <input
+              matInput
+              placeholder="Loading District"
+              formControlName="loadingDistrict"
+              readonly
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="15%">
+            <mat-label>Loading Point</mat-label>
+            <input
+              matInput
+              placeholder="Loading Point"
+              formControlName="loadingPoint"
+              readonly
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="15%">
+            <mat-label>Loading Person</mat-label>
+            <input
+              matInput
+              placeholder="Loading Person"
+              formControlName="loadingPerson"
+              readonly
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="15%">
+            <mat-label>Loading Person Contact</mat-label>
+            <input
+              matInput
+              placeholder="Loading Person Contact"
+              formControlName="personContact"
+              readonly
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="15%">
+              <mat-label>loading Date</mat-label>
+              <input class="label-padding" matInput [matDatepicker]="picker1" formControlName="loadingDate" placeholder="Loading Date" readonly>
+              <!-- <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle> -->
+              <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" fxFlex="15%">
+              <mat-label class="label-padding">Loading Time</mat-label>
+              <input type="time" id="loading_time" matInput formControlName="loadingTime" placeholder="Loading Time" readonly>
+          </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+      <br />
+    </form>
+    <br />
+    <div>
+      <form [formGroup]="myForm">
+        <mat-card class="loadInfo">
+          <h2 style="margin-bottom: -40px">Unloadding Points:</h2>
+          <div
+            formArrayName="arr"
+            *ngFor="
+              let a of myForm.get('arr')['controls'];
+              let i = index;
+              let productIndex = index
+            "
+           >
+            <div
+              [formGroupName]="productIndex"
+              fxLayout="row wrap"
+              fxLayoutGap="15px"
+              fxFlex="100%"
+              fxFlex.sm="100%"
+              fxLayout.lt-sm="column"
+              fxFlex.xs="100%"
+              fxLayoutAlign="flex-start"
+            >
+              <mat-form-field appearance="outline" fxFlex="15%">
+                <mat-label>Unloading District</mat-label>
+                <input
+                  matInput
+                  placeholder="Unloading District"
+                  formControlName="unloadingDistrict"
+                  readonly
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="15%">
+                <mat-label>Unloading Point</mat-label>
+                <input
+                  matInput
+                  placeholder="Unloading Point"
+                  formControlName="unloadingPoint"
+                  readonly
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="15%">
+                <mat-label>Unloading Person</mat-label>
+                <input
+                  matInput
+                  placeholder="Unloading Person"
+                  formControlName="unloadingPerson"
+                  readonly
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="15%">
+                <mat-label>Unloading Person Contact</mat-label>
+                <input
+                  matInput
+                  placeholder="Unloading Person Contact"
+                  formControlName="unloadpersonContact"
+                  readonly
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="15%">
+                  <mat-label>Unoading Date</mat-label>
+                  <input class="label-padding" matInput [matDatepicker]="picker1" formControlName="unloadingDate" placeholder="Unloading Date" readonly>
+                  <!-- <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle> -->
+                  <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" fxFlex="15%">
+                  <mat-label class="label-padding">Unloading Time</mat-label>
+                  <input type="time" id="loading_time" matInput formControlName="unloadingTime" placeholder="Unloading Time" readonly>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card>
+        <br />
+      </form>
+      <br />
+    </div>
+    
+    <div fxLayoutAlign="center center" style="height: 10px">
+      <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+        CANCEL
+      </button>
+      <button
+        (click)="onSubmit()"
+        mat-raised-button
+        color="success"
+        [disabled]="!this.myForm.valid"
+        [disabled]="!this.myFormTwo.valid"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+  
+
+

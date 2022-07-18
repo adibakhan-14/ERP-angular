@@ -1,0 +1,56 @@
+{
+    "truck_details": [{
+        "name": "7 ft",
+        "length": "7",
+        "weight": "1.5 ton",
+        "cbm": "3",
+        "bidding_validity": "",
+        "type": "covered",
+        "product_and_destination": [{
+                "truck_loading_point": "ffffff",
+                "load_district": "Dhaka",
+                "truck_loading_date": "2022-01-18",
+                "truck_loading_time": "11:18",
+                "loading_person": "Azad",
+                "loading_phone": "+8801754272330",
+                "unload_district": "Barguna",
+                "truck_unloading_point": "Kodila More",
+                "unloading_person": "oly",
+                "unloading_phone": "+8801754272330",
+                "product": [{
+                    "product_name": "Chips",
+                    "product_weight": "4 ton",
+                    "product_spec": "4 ton"
+                }]
+            },
+            {
+                "truck_loading_point": "ffffff",
+                "load_district": "Dhaka",
+                "truck_loading_date": "2022-01-18",
+                "truck_loading_time": "11:18",
+                "loading_person": "Azad",
+                "loading_phone": "+8801754272330",
+                "unload_district": "Barguna",
+                "truck_unloading_point": "Kodila More",
+                "unloading_person": "oly",
+                "unloading_phone": "+8801754272330",
+                "product": [{
+                    "product_name": "Chips",
+                    "product_weight": "4 ton",
+                    "product_spec": "4 ton"
+                }]
+            }
+        ]
+    }],
+    "customer_id": "+8801775996664_adbk_customer",
+    "email": "adiba@erainfotechbd.com",
+    "name": "sandil azad",
+    "orientation": "order",
+    "phone": "+8801775996664",
+    "previous_status": "ordersPlaced",
+    "sk": "++8801775996664_adbk_customer",
+    "status": "ordersPlaced",
+    "updated_by": "adiba@erainfotechbd.com",
+    "type": "corporate",
+    "count": 1
+}

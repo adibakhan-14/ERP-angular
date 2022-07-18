@@ -1,0 +1,92 @@
+.continer {
+    padding: 50px;
+    background-color: white;
+    background-size: cover;
+    height: 100%;
+  }
+  
+  h2 {
+    font-weight: 500;
+    border: #00457E;
+    height: 70px;
+  }
+  
+  .truckInfo {
+    background-color: #D7E9F8;
+  }
+  
+  .loadInfo {
+    background-color: #D6F7E1;
+  }
+  
+  .unloadInfo {
+    background-color: #FFEDDB;
+  }
+  
+  .prodInfo {
+    background-color: #E7E2F8;
+  }
+  
+  .biddInfo {
+    background-color: #C0EAEA;
+  }
+  
+  .title {
+    font-family: 'Manrope';
+  
+  }
+  
+  .mat-form-field{
+    width:140px !important;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 10px;
+  }
+  
+  .buttonHeightWidth {
+    width: -10px
+  }
+  .card-container {
+    height: 60px;
+    background-color: #00457E;
+    margin-right: -24px;
+    margin-left: -24px;
+    margin-top: -24px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #f2f2f2;
+    font-family: Manrope;
+    font-size: 15px;
+    padding-top: 15px;
+  }
+  
+  .mat-raised-button.mat-warn {
+    font-size: Lato;
+    font-size: 12px;
+    color: white;
+    background-color: #E80000;
+    margin-right: 10px;
+    width: 120px;
+    height: 40px;
+  }
+  
+  .mat-raised-button.mat-success {
+    font-size: Lato;
+    font-size: 12px;
+    align-content: center;
+    color: white;
+    background-color: #00457E;
+    width: 120px;
+    height: 40px;
+  }
+
+  .myDiv {
+    border: 2px outset #00457E;
+    // background-color: lightblue;    
+    text-align: center;
+  }

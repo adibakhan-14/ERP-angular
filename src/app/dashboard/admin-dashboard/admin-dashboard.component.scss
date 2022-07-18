@@ -1,0 +1,305 @@
+// // .tp-container {
+// //     position: absolute;
+// //     top: 0;
+// //     bottom: 0;
+// //     left: 0;
+// //     right: 0;
+
+// //  }
+
+// @media only screen and (max-width: 959px) {
+//   .orders-board-container {
+//     width: 100%;
+
+//     overflow-y: auto;
+//     margin: 0 100px 0 100px;
+//   }
+// }
+// .orders-board-container {
+//   margin: 10px;
+// }
+
+// .circular-progress{
+//   height: 220px;
+// }
+// // .bal a.active {
+// //   background-color: rgb(196, 23, 23);
+// //   color: white;
+// // }
+// .tp-section1 {
+//   display: flex;
+//   align-content: center;
+//   //text-align: center;
+//   //@extend  align-items: center;
+//   //padding-left: 40px;
+//   height: 40px;
+//   width: 250px;
+//   //background-color: rgb(196, 23, 23);
+//   color: white;
+//   // overflow: hidden;
+// }
+
+// .tp-section2 {
+//   display: flex;
+//   align-content: center;
+//   //text-align: center;
+//   //@extend  align-items: center;
+//   padding-left: 27px;
+//   height: 40px;
+//   width: 250px;
+//   background-color: rgb(196, 23, 23);
+//   color: white;
+//   // overflow: hidden;
+// }
+// .tp-section1 a {
+//   float: left;
+//   color: #f2f2f2;
+//   text-align: center;
+//   padding: 08px 16px 5px 70px;
+//   text-decoration: none;
+//   font-size: 17px;
+//   width: 150px;
+//   // border-right: 1px solid white;
+// }
+// .tp-section {
+//   display: flex;
+//   align-content: center;
+//   //@extend  align-items: center;
+//   height: 128px;
+//   width: 160px;
+//   padding: 0px 16px 0px 50px;
+//   margin: 0px 0px 0px 10px;
+//   margin-top: 4px;
+
+//   //  background-color: rgb(196, 23, 23);
+//   // overflow: hidden;
+// }
+// .app-sidenav-container {
+//   flex: 1;/*  */
+//   height: 100%;
+//   position: relative;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   width: 100%;
+//   // height: '100%';
+//   min-width: 100%;
+//   min-height: 100%;
+//   //  background: #eee;
+// }
+// .app-sidenav-content {
+//   background-color:#F7F5F5;
+//   width: "100%";
+//   margin: 5px;
+//   min-width: "100%";
+//   height: calc(89vh - 85px);
+// }
+// .app-sidenav {
+//   //border-left: 1px solid rgb(220, 20, 60);
+//   //border-right: 1px solid crimson;
+//   height: "100%";
+//   background-color: #FFFFFF;
+
+
+
+// }
+// h3 {
+//   text-align: center;
+//   //  margin-top: 5px;
+//   //   color: azure;
+//   // padding: 10px;
+//   font-size: 15px;
+//   margin-top: 10px;
+//   //  background-color: black;
+
+//   color: #444444;
+// }
+// .example-card1 {
+//   height: 205px;
+//   margin-top: 14px;
+//   margin-right: 25px;
+//   width: 680px;
+//   //  border-radius: 4px;
+//   // background: #90caf9;
+//   border-radius: 5px;
+//   background-color: white;
+//   box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+//   // transition: 0.3s;
+// }
+
+// // .example-card {
+// //   //  height: 280px;
+// //    // margin: 15px;
+// //   //  width: 400px;
+// //     margin-top: 10px;
+// //     margin-right: 10px;
+// //     margin-left: 10px;
+// //     border-radius: 5px;
+// //     // background: #90caf9;
+// //     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+// //    // transition: 0.3s;
+// //   }
+
+// .autocomplete{
+
+//  color: black;
+//  font-size: 15px;
+
+// };
+
+// .autocomplete-width{
+//   text-align: center;
+// }
+
+// .sidenav {
+//   height: 80%;
+//   width: 560px;
+//   position: fixed;
+//   z-index: 1;
+//   top: 0;
+//   left: 0;
+//   background-color: #111;
+//   overflow-x: hidden;
+//   padding-top: 20px;
+// }
+// .sidenav a {
+//   padding: 6px 8px 6px 16px;
+//   text-decoration: none;
+//   font-size: 25px;
+//   color: #818181;
+//   display: block;
+// }
+// button{
+//   margin-right: 5px;
+// }
+
+// // .mat-raised-button.mat-warn.mat-small{
+// //   background-color:#bd6514;
+// //   color: #fff;
+// //   min-width: 1%;
+
+
+// // }
+
+.buttonSearch{
+  background-color: #006A66; /* Green */
+  color: white;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 5px;
+  height: 40px;
+  width: 47px;
+  outline: none;
+   //float: right;
+}
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateX(80%);
+  transform: translateX(70%);
+}
+
+
+//   background-color: white; /* Green background */
+//   border: 1px solid  white; /* Green border */
+//   color:#000000; /* White text */
+//   padding: 10px 24px; /* Some padding */
+//   height: 50px;
+//   width: 250px;
+//   font-size: 14px;
+//   font-family: Lato;
+//   font-weight: bold;
+//   text-align: left;
+
+// }
+
+// .btn-group button:not(:last-child) {
+//   border-bottom: none; /* Prevent double borders */
+// }
+
+// /* Add a background color on hover */
+// .btn-group button:hover {
+//   background-color: #006A66;
+//   color: #FFFFFF; /* White text */
+//   border: 1px solid #707070; /* White text */
+//   font-size: 14px;
+//   font-family: Lato;
+//   font-weight: bold;
+//   height: 50px;
+//   width: 250px;
+
+
+// }
+
+.example-form {
+
+  float: right;
+}
+
+
+
+.container {
+  width: 100%;
+  height: 95%;
+}
+
+// .Container {
+//   width: 100%;
+//   height: 100%;
+//   margin: 10px;
+// }
+
+
+
+
+
+.status-card{
+  width: 250px;
+  height: 40px;
+  border-radius:0px;
+
+}
+.status-card-text{
+
+  margin-top: 5px;
+  font-family: Lato;
+  font-weight: bold;
+  font-weight: 14px;
+
+}
+
+.chart-card{
+  width: 592px;
+  height:200px;
+  border-radius:0px;
+  font-family: Lato;
+  font-weight: bold;
+
+}
+
+.dot {
+  height: 40px;
+  width: 40px;
+  background-color: #1BBDB8;
+  border-radius: 100%;
+  display: inline-block;
+  text-align: center;
+  border:4px solid whitesmoke;
+
+
+}
+
+.status-card-text-cir{
+  margin-top: 5px;
+  font-family: Lato;
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+
+}
+

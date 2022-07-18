@@ -1,0 +1,43 @@
+input[type=text] {
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    width:100%;
+
+  }
+
+  .rounded-input {
+    padding:10px;
+    border-radius:10px;
+  }
+.pad{
+
+ margin-bottom:500px;
+
+
+ }
+
+.button{
+  background-color: green($color: #77ce05);
+}
+
+#showcase {
+  background-image:url("../../assets/images/login.png");;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  // height: 100vh;
+  // margin-left: 10px;
+  // margin-right: 10px;
+  // margin-bottom: 5px;
+  margin: 0px 10px 0px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.overlay {
+  box-shadow: inset 0 0 0 100vw rgba(255, 255, 255, 0.5);
+
+  z-index: 2;
+}

@@ -1,0 +1,50 @@
+#radio-button{
+    display: flex;
+    flex-direction: row;
+  //  display: inline-grid;
+  // display: grid;
+  margin: 10px 0;
+  }
+  
+  
+  .continer{
+    padding: 50px;
+    background-color: #EDF5F3;
+    background-size: cover;
+    height: 95vh;
+  }
+  mat-radio-button{
+    margin-right: 5px;
+  }
+  .mat-dialog-actions{
+  padding: 24px;
+  }
+  .btn{
+    background: none repeat scroll 0 0 #1BBDB8;
+    color: #FFFFFF;
+    height: 50px;
+    left: 84%;
+    position: fixed;
+    top: 500px;
+    height: 30px;
+    width: 150px;
+  }
+  
+  .btnU{
+    background: none repeat scroll 0 0 #1BBDB8;
+    color: #FFFFFF;
+    height: 50px;
+    left: 75%;
+    position: fixed;
+    top: 14%;
+    height: 30px;
+    width: 280px;
+  }
+  .btnD{
+    background: none repeat scroll 0 0 #DCE3E1;
+    color: #000000;
+    height: 30px;
+    left: 3.8%;
+    position: fixed;
+    top: 500px;
+  }

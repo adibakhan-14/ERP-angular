@@ -1,0 +1,199 @@
+<div class="card-container">
+  <h1 mat-dialog-title>{{ data.name }} (Loading Point)</h1>
+</div>
+<br />
+<div>
+  <form [formGroup]="myForm">
+    <mat-card class="loadInfo">
+      <!-- <div>
+        <h2>Truck Length:{{data.truck_details.truck_length.name}}</h2>
+        <h2>Truck Capacity: {{data.truck_details.truck_length.weight}}</h2>
+    </div> -->
+    <div class='myDiv'>
+      <h2 style="margin-bottom: -40px">
+        Truck Info:
+      </h2>
+        <span> Truck Length: {{data.truck_details.truck_length.name}}</span>
+        <span> Truck Capacity: {{ data.truck_details.truck_length.weight}}</span>
+    </div>
+      <h2 style="margin-bottom: -40px">Product Information:</h2>
+      <div
+        formArrayName="arr"
+        *ngFor="
+          let a of myForm.get('arr')['controls'];
+          let i = index;
+          let productIndex = index
+        "
+       >
+        <div
+          [formGroupName]="productIndex"
+          fxLayout="row wrap"
+          fxLayoutGap="15px"
+          fxFlex="100%"
+          fxFlex.sm="100%"
+          fxLayout.lt-sm="column"
+          fxFlex.xs="100%"
+          fxLayoutAlign="flex-start"
+        >
+          <mat-form-field appearance="outline" fxFlex="22%">
+            <mat-label>Product Name</mat-label>
+            <input
+              matInput
+              placeholder="Product Name"
+              formControlName="productName"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="22%">
+            <mat-label>Product Material</mat-label>
+            <input
+              matInput
+              placeholder="Product Material"
+              formControlName="productMaterial"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="22%">
+            <mat-label>Product Quantity</mat-label>
+            <input
+              matInput
+              placeholder="Product Quantity"
+              formControlName="productQuantity"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="22%">
+            <mat-label>Product Weight</mat-label>
+            <input
+              matInput
+              placeholder="Product Weight"
+              formControlName="productWeight"
+            />
+          </mat-form-field>
+          <section *ngIf="i > 0">
+            <button
+              mat-fab
+              color="warn"
+              style="height: 50px; width: 50px; margin-top: 4px"
+              (click)="removeProduct(i, productIndex)"
+              aria-label="Example icon button with a delete icon"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </section>
+        </div>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addItem()"
+        style="margin-left: 47%; margin-top: -30px"
+      >
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+    </mat-card>
+    <br />
+  </form>
+  <br />
+  <div>
+    <form [formGroup]="myFormTwo">
+      <mat-card class="loadInfo">
+        <h2 style="margin-bottom: -40px">Loading Points:</h2>
+        <div
+          formArrayName="arrTwo"
+          *ngFor="
+            let a of myFormTwo.get('arrTwo')['controls'];
+            let i = index;
+            let productIndex = index
+          "
+         >
+          <div
+            [formGroupName]="productIndex"
+            fxLayout="row wrap"
+            fxLayoutGap="15px"
+            fxFlex="100%"
+            fxFlex.sm="100%"
+            fxLayout.lt-sm="column"
+            fxFlex.xs="100%"
+            fxLayoutAlign="flex-start"
+          >
+            <mat-form-field appearance="outline" fxFlex="15%">
+              <mat-label>Loading District</mat-label>
+              <input
+                matInput
+                placeholder="Loading District"
+                formControlName="loadingDistrict"
+                readonly
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="15%">
+              <mat-label>Loading Point</mat-label>
+              <input
+                matInput
+                placeholder="Loading Point"
+                formControlName="loadingPoint"
+                readonly
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="15%">
+              <mat-label>Loading Person</mat-label>
+              <input
+                matInput
+                placeholder="Loading Person"
+                formControlName="loadingPerson"
+                readonly
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="15%">
+              <mat-label>Loading Person Contact</mat-label>
+              <input
+                matInput
+                placeholder="Loading Person Contact"
+                formControlName="personContact"
+                readonly
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="15%">
+                <mat-label>Actual Loading Date</mat-label>
+                <input class="label-padding" matInput [matDatepicker]="picker1" formControlName="actualLoadingDate" placeholder="Actual Unloading Date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex="15%">
+                <mat-label class="label-padding">Actual Loading Time</mat-label>
+                <input type="time" id="loading_time" matInput formControlName="actualLoadingTime" placeholder="Actual Unloading Time">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+      <br />
+    </form>
+    <br />
+    <!-- <div fxLayoutAlign="center center" style="height: 100px"> -->
+      <!-- <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+        CANCEL
+      </button> -->
+      <!-- <button
+        (click)="onClick()"
+        mat-raised-button
+        color="success"
+        [disabled]="!this.myForm.valid"
+      >
+        Confirm
+      </button> -->
+    <!-- </div> -->
+  </div>
+  
+  <div fxLayoutAlign="center center" style="height: 10px">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+      CANCEL
+    </button>
+    <button
+      (click)="onSubmit()"
+      mat-raised-button
+      color="success"
+      [disabled]="!this.myForm.valid"
+      [disabled]="!this.myFormTwo.valid"
+    >
+      Confirm
+    </button>
+  </div>
+</div>

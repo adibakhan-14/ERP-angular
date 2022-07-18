@@ -1,0 +1,141 @@
+<!-- <div fxLayout="column" fxLayoutAlign="space-around center">
+    <div style="background-color:#1BBDB8;width: 100%; margin-top: -24px;">
+        <title style="text-align: center;padding-top:15px; color:#FFFFFF" mat-dialog-title>Details Collected</title>
+    </div>
+</div> -->
+<div class="card-container">
+    <h1 mat-dialog-title>{{data.name}} (Placed Trip)</h1>
+</div>
+<br>
+<div>
+<form  [formGroup]="myForm">
+<mat-card class="truckInfo">
+    <h2 style="margin-bottom: -40px;">Truck Information</h2>
+    <div>
+    <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
+        <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+            <mat-label>Vehicle Type</mat-label>
+            <mat-select class="input-design" formControlName="truckType" (valueChange)="typeValue($event)">
+                <mat-option *ngFor="let type of types" [value]="type.value">
+                    {{ type.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+            <mat-label>Vehicle Length</mat-label>
+            <mat-select class="input-design" formControlName="truckLength">
+                <mat-option *ngFor="let length of lengths" [value]="length">
+                    {{ length.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+            <mat-label>Customer Fare</mat-label>
+            <input matInput placeholder="Customer Fare" formControlName="truckFare" >
+        </mat-form-field>
+    </div>
+    </div>
+</mat-card>
+<br>
+<mat-card class="loadInfo">
+    <h2 style="margin-bottom: -40px;">Loading Point Information 
+    </h2>
+    <div formArrayName="arr" *ngFor="let a of myForm.get('arr')['controls']; let i = index ; let loadIndex = index">
+      <div [formGroupName]="loadIndex" fxLayout="row wrap" fxLayoutGap="15px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
+        <mat-form-field appearance="outline">
+            <mat-label>Loading District</mat-label>
+            <mat-select class="input-design" formControlName="loadingDistrict" >
+                <mat-option *ngFor="let district of distList" [value]="district">
+                    {{ district }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Loading Point</mat-label>
+            <input matInput placeholder="Loading Point" formControlName="loadingPoint" >
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Loading Person</mat-label>
+            <input matInput placeholder="Loading Person" formControlName="loadingPerson" >
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Person Contact</mat-label>
+            <input matInput placeholder="Person Contact" formControlName="personContact" >
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label class="label-padding">Loading Date</mat-label>
+            <input class="label-padding" matInput [matDatepicker]="picker1" formControlName="loadingDate" placeholder="Loading Date" >
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label class="label-padding">Loading Time</mat-label>
+            <input type="time" id="loading_time" matInput formControlName="loadingTime" placeholder="Loading Time" >
+        </mat-form-field>
+        <section *ngIf="i>0">
+            <button mat-fab color="warn" style="height: 50px; width: 50px; margin-top: 4px;" (click)="removeProduct(i,loadIndex)" aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+              </button>
+        </section>
+    </div>
+    </div>
+    <button mat-raised-button color="primary" (click)="addItem()" style="margin-left: 47%; margin-top: -30px;"><mat-icon>add_circle_outline</mat-icon></button>
+</mat-card>
+<br>
+<mat-card class="unloadInfo">
+    <h2 style="margin-bottom: -40px;">Unoading Point Information 
+    </h2>
+    <div formArrayName="unloadArr" *ngFor="let a of myForm.get('unloadArr')['controls']; let i = index ; let unloadIndex = index">
+      <div [formGroupName]="unloadIndex" fxLayout="row wrap" fxLayoutGap="15px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
+        <mat-form-field appearance="outline">
+            <mat-label>Unloading District</mat-label>
+            <mat-select class="input-design" formControlName="unloadingDistrict" >
+                <mat-option *ngFor="let district of distList" [value]="district">
+                    {{ district }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Unloading Point</mat-label>
+            <input matInput placeholder="Unloading Point" formControlName="unloadingPoint">
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Unloading Person</mat-label>
+            <input matInput placeholder="Unloading Person" formControlName="unloadingPerson">
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Person Contact</mat-label>
+            <input matInput placeholder="Person Contact" formControlName="unloadpersonContact">
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label class="label-padding">Unloading Date</mat-label>
+            <input class="label-padding" matInput [matDatepicker]="picker1" formControlName="unloadingDate" placeholder="Loading Date" >
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label class="label-padding">Unloading Time</mat-label>
+            <input type="time" id="loading_time" matInput formControlName="unloadingTime" placeholder="Loading Time" >
+        </mat-form-field>
+        <section *ngIf="i>0">
+        <button mat-fab color="warn" style="height: 50px; width: 50px; margin-top: 4px;" (click)="removeunloadProduct(i,unloadIndex)" aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+        </button>
+        </section>
+    </div>
+    </div>
+    <button mat-raised-button color="primary" (click)="unloadAddItem()" style="margin-left: 47%; margin-top: -30px;"><mat-icon>add_circle_outline</mat-icon></button>
+</mat-card>
+</form>
+<br>
+    <!-- <button mat-raised-button color="primary" [disabled]="!this.myForm.valid" type="submit" (click)="onSubmit()" style="margin-top: -30px;">Submit</button> -->
+    <div fxLayoutAlign="center center" style="height: 100px;">
+        <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+        CANCEL 
+      </button>
+        <button (click)="onSubmit()" mat-raised-button color="success" [disabled]="!this.myForm.valid">
+        Confirm
+      </button>
+    </div>
+
+</div>

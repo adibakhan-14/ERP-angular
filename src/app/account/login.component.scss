@@ -1,0 +1,222 @@
+.Rectangle_25_et {
+  width: 340px;
+  height: 50px;
+  margin: 10px;
+  background-color: #d0f0d6;
+  border: none;
+}
+
+.button-click {
+  width: 340px;
+  height: 50px;
+  margin: 10px;
+  border: none;
+  background-color: #1BBDB8;
+  color: white;
+  font-weight: bold;
+}
+
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-div {
+  width: 70%;
+}
+.image-div img {
+  height: 100%;
+  width: 100%;
+}
+.login-div {
+  width: 30%;
+  text-align: right;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: #ffffff;
+}
+
+.form-feild-div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.insideForm {
+  position: absolute;
+  left: 70%;
+  right: 5;
+  top: 10%;
+  // background-color: #ffffff;
+}
+
+.logo {
+  margin-bottom: 50px !important;
+  text-align: center;
+}
+.logo img {
+  height: 75px;
+  width: 200px;
+}
+.inputField {
+  margin-bottom: 10 px !important;
+}
+.footerLogin {
+  position: fixed;
+  bottom: 0;
+  right: 5;
+  left: 80%;
+  background-color: #ffffff;
+}
+
+@media only screen and (max-width: 1200px) {
+  .Rectangle_25_et {
+    width: 280px;
+    height: 50px;
+    margin: 10px;
+    background-color: #d0f0d6;
+    border: none;
+  }
+
+  .button-click {
+    width: 280px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    background-color: #1BBDB8;
+    color: white;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width: 1060px) {
+  .Rectangle_25_et {
+    width: 240px;
+    height: 50px;
+    margin: 10px;
+    background-color: #d0f0d6;
+    border: none;
+  }
+
+  .button-click {
+    width: 240px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    background-color: #1BBDB8;
+    color: white;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .Rectangle_25_et {
+    width: 180px;
+    height: 50px;
+    margin: 10px;
+    background-color: #d0f0d6;
+    border: none;
+  }
+
+  .button-click {
+    width: 180px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    background-color: #1BBDB8;
+    color: white;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .Rectangle_25_et {
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+    background-color: #d0f0d6;
+    border: none;
+  }
+
+  .button-click {
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    background-color: #2fab46;
+    color: white;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width: 660px) {
+  .Rectangle_25_et {
+    width: 120px;
+    height: 50px;
+    margin: 10px;
+    background-color: #d0f0d6;
+    border: none;
+  }
+
+  .button-click {
+    width: 120px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    background-color: #1BBDB8;
+    color: white;
+    font-weight: bold;
+  }
+  .logo img {
+    height: 50px;
+    width: 160px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .container-fluid {
+    display: flex;
+    flex-direction: column;
+  }
+  .image-div {
+    visibility: hidden;
+  }
+  .insideForm {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .footerLogin {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    background-color: #ffffff;
+  }
+  .Rectangle_25_et {
+    width: 220px;
+    height: 50px;
+    margin: 10px;
+    background-color: #d0f0d6;
+    border: none;
+  }
+
+  .button-click {
+    width: 220px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    background-color: #1BBDB8;
+    color: white;
+    font-weight: bold;
+  }
+  .logo img {
+    height: 50px;
+    width: 160px;
+  }
+}
+  

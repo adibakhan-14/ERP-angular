@@ -1,0 +1,119 @@
+<div class="card-container">
+    <h1 mat-dialog-title>{{data.name}} (Details Collected)</h1>
+</div>
+<br>
+<div [formGroup]="myForm">
+    <mat-card class="loadInfo">
+        <!-- <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Partner</mat-label>
+            <mat-select formControlName="partner">
+              <mat-option *ngFor="let vendor of vendorData" [value]="vendor.vendor_id">
+                <span>{{ vendor.vendor_name }}</span> |
+                <small> {{ vendor.vendor_id }}</small>
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+        <mat-form-field
+          appearance="outline"
+          style="width: 100%;"
+        >
+          <mat-label>Partner</mat-label>
+          <mat-select formControlName="partner" required>
+            <input
+              style="
+                width: -webkit-fill-available;
+                margin-bottom: 10px;
+                height: 30px;
+              "
+              placeholder="Search & Select"
+              (keyup)="onSearchPartner($event.target.value)"
+            />
+            <div style="height: 200px; overflow-y: auto">
+              <mat-option>Select Partner</mat-option>
+              <mat-option *ngFor="let item of SourceDataVendor" [value]="item.vendor_id">
+                <span>{{ item.vendor_name }}</span> |
+                <small> {{ item.vendor_id }}</small>
+              </mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Partner Fare</mat-label>
+            <input matInput placeholder="Partner Fare" formControlName="partnerFare">
+        </mat-form-field>
+          <!-- <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Truck reg</mat-label>
+            <mat-select formControlName="truck_id">
+              <mat-option *ngFor="let truck of filteredTruckData" [value]="truck.truck_id">
+                <span>{{ truck.truck_reg }}</span>|
+                <small> {{ truck.truck_id }}</small>
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+        <mat-form-field
+          appearance="outline"
+          style="width: 100%;"
+        >
+          <mat-label>Truck Reg</mat-label>
+          <mat-select formControlName="truck_id" required>
+            <input
+              style="
+                width: -webkit-fill-available;
+                margin-bottom: 10px;
+                height: 30px;
+              "
+              placeholder="Search & Select"
+              (keyup)="onSearchTruck($event.target.value)"
+            />
+            <div style="height: 200px; overflow-y: auto">
+              <mat-option>Select Truck</mat-option>
+              <mat-option *ngFor="let item of SourceDataTruck" [value]="item.truck_id">
+                <span>{{ item.truck_reg }}</span> |
+                <small> {{ item.truck_id }}</small>
+              </mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
+          <!-- <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Driver</mat-label>
+            <mat-select formControlName="driver_id">
+              <mat-option *ngFor="let driver of filteredDriverData" [value]="driver.driver_id">
+                <span>{{ driver.name }}</span>|
+                <small> {{ driver.driver_id }}</small>
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+        <mat-form-field
+          appearance="outline"
+          style="width: 100%;"
+        >
+          <mat-label>Driver</mat-label>
+          <mat-select formControlName="driver_id" required>
+            <input
+              style="
+                width: -webkit-fill-available;
+                margin-bottom: 10px;
+                height: 30px;
+              "
+              placeholder="Search & Select"
+              (keyup)="onSearchDriver($event.target.value)"
+            />
+            <div style="height: 200px; overflow-y: auto">
+              <mat-option>Select Driver</mat-option>
+              <mat-option *ngFor="let item of SourceDataDriver" [value]="item.driver_id">
+                <span>{{ item.name }}</span> |
+                <small> {{ item.driver_id }}</small>
+              </mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
+    </mat-card>
+    <div fxLayoutAlign="center center" style="height: 100px;">
+        <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+        CANCEL 
+      </button>
+        <button (click)="onSubmit()" mat-raised-button color="success" [disabled]="!this.myForm.valid">
+        Confirm
+      </button>
+    </div>
+</div>

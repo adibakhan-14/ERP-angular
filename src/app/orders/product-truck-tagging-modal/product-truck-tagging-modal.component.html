@@ -1,0 +1,135 @@
+<!-- <div class="card-container">
+    <h1 mat-dialog-title>Trip Wise Challan Details Of {{' '+this.data.name}}</h1>
+</div>
+<p></p>
+<table class="requiredOne">
+    <thead>
+        <th>Order Id</th>
+        <th>Trip Id</th>
+        <th>Loading District</th>
+        <th>Loading Point</th>
+        <th>Product name</th>
+        <th>Product Weight</th>
+        <th>Product Quantity</th>
+       
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let item of finalData; let i = index" class="customClass">
+            <td>
+                {{this.leaseData[0].information[0].truck_details[i].order_id}}
+            </td>
+            <td>
+                {{ 'Trip_'+(i+1)}}
+            </td>
+            <td>
+                <tr *ngFor="let item of this.leaseData[0].information[0].truck_details[i].destination[0].loadingPoint;">
+                    {{item.load_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.leaseData[0].information[0].truck_details[i].destination[0].loadingPoint;">
+                    {{item.loading_point}}
+                </tr>
+            </td>
+            <td>
+                <form  [formGroup]="form" >
+                    <input type="text" placeholder="Product Name" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput [formControl]="product_name" required autocomplete="off"
+                        (change)="addProductName(item , i)">
+                      
+
+                </form>
+            </td>
+            <td>
+                <form  [formGroup]="form" >
+                    <input type="text" placeholder="Product Weight" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput [formControl]="product_weight" required autocomplete="off"
+                        (change)="addProductWeight(item , i)">
+                </form>
+            </td>
+            <td>
+                <form  [formGroup]="form" >
+                    <input type="text" placeholder="Product Quantity" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput [formControl]="product_quantity" required autocomplete="off"
+                        (change)="addProductQuantity(item , i)">
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div fxLayoutAlign="center center" style="height: 150px;">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+    CANCEL
+  </button>
+  <button (click)="onSubmit()" mat-raised-button color="success"  >
+    Send To Intransit
+</button>
+</div> -->
+
+<div class="card-container">
+    <h1 mat-dialog-title>Trip Wise Challan Details Of {{' '+this.data.name}}</h1>
+</div>
+<p></p>
+<table class="requiredOne">
+    <thead>
+        <th>Order Id</th>
+        <th>Trip Id</th>
+        <th>Loading District</th>
+        <th>Loading Point</th>
+        <th>Product name</th>
+        <th>Product Weight</th>
+        <th>Product Quantity</th>
+       
+    </thead>
+    <tbody style="text-align: center; ">
+        <tr *ngFor="let group of groups; index as i" class="customClass">
+            <ng-container [formGroup]="group">
+            <td>
+                {{this.leaseData[0].information[0].truck_details[i].order_id}}
+            </td>
+            <td>
+                {{ 'Trip_'+(i+1)}}
+            </td>
+            <td>
+                <tr *ngFor="let item of this.leaseData[0].information[0].truck_details[i].destination[0].loadingPoint;">
+                    {{item.load_district}}
+                </tr>
+            </td>
+            <td>
+                <tr *ngFor="let item of this.leaseData[0].information[0].truck_details[i].destination[0].loadingPoint;">
+                    {{item.loading_point}}
+                </tr>
+            </td>
+            <td>
+                <!-- <form  [formGroup]="form" > -->
+                    <input type="text" placeholder="Product Name" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput formControlName="product_name" required autocomplete="off"
+                        (change)="addProductName(group , i)">
+                      
+
+                <!-- </form> -->
+            </td>
+            <td>
+                <!-- <form  [formGroup]="form" > -->
+                    <input type="text" placeholder="Product Weight" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput formControlName="product_weight" required autocomplete="off"
+                        (change)="addProductWeight(group , i)">
+                <!-- </form> -->
+            </td>
+            <td>
+                <!-- <form  [formGroup]="form" > -->
+                    <input type="text" placeholder="Product Quantity" aria-label="State" style=" width: 180px;height: 40px;margin-top:1px;background-color:#F7F5F5; border-radius:5px;  border: 2px solid #E7E5E5 ;outline: none;" matInput formControlName="product_quantity" required autocomplete="off"
+                        (change)="addProductQuantity(group , i)">
+                <!-- </form> -->
+            </td>
+        </ng-container>
+        </tr>
+    </tbody>
+</table>
+
+<div fxLayoutAlign="center center" style="height: 150px;">
+    <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+    CANCEL
+  </button>
+  <button (click)="onSubmit()" mat-raised-button color="success" [disabled]="!this.tableForm.valid" >
+    Send To Intransit
+</button>
+</div>
+<!-- <button (click)="checker()" mat-raised-button color="success"> -->
+<!-- <pre>{{tableForm.value | json}}</pre> -->

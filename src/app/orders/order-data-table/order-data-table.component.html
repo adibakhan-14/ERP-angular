@@ -1,0 +1,38 @@
+<H1>HELLO</H1>
+    <div>
+        <table mat-table [dataSource]="dataStatusArray" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Customer name. </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="order_id">
+                <th mat-header-cell *matHeaderCellDef> Order Id. </th>
+                <td mat-cell *matCellDef="let element"> {{element.order_id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="created_date">
+                <th mat-header-cell *matHeaderCellDef> Date. </th>
+                <td mat-cell *matCellDef="let element"> {{element.created_date}} </td>
+            </ng-container>
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Phone. </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button color="primary" (click)="nextStepOrder('inProgress',element)">Send to In Progress</button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-link">
+                    <a (click)="openDialog('Update',element)">view</a> |
+                    <a (click)="openDialog('Delete',element)">Edit</a>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>

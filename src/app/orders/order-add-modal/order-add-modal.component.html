@@ -1,0 +1,245 @@
+<div class="continer">
+    <div fxLayout="column" fxLayoutAlign="space-around">
+        <div>
+            <title class="title" mat-dialog-title>Order</title>
+        </div>
+
+
+        <mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate">
+        </mat-progress-bar>
+
+        <mat-form-field fxFlex="0 1 calc(32% + 2px)" fxFlex.lt-md="0 1 calc(48%)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="outline">
+            <mat-label class="label-padding">Search Customer</mat-label>
+            <input class="label-padding" matInput placeholder="Customer Name | Phone" aria-label="State" [matAutocomplete]="auto" [formControl]="customerControl" />
+            <mat-icon matSuffix>search</mat-icon>
+
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectCustomer($event.option.value)">
+                <mat-option *ngFor="let state of filteredStates | async" [value]="state.customer_id">
+                    <!-- <img class="example-option-img" aria-hidden [src]="state.image_path" height="25" /> -->
+                    <span>{{ state.name }}</span> |
+                    <small>Phone: {{ state.phone }}</small>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <div fxLayout="column" fxLayoutAlign="space-around">
+            <div>
+
+                <div fxLayout="row" fxLayoutAlign="space-around center">
+
+                    <div>
+                        <button mat-raised-button type="button" class="btnU" (click)=(isChangeUI())>
+                            Order Create By Excel
+                            <mat-icon matSuffix style="cursor: pointer">open_in_browser</mat-icon>
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <mat-progress-bar *ngIf="asyncService?.isLoading | async" mode="indeterminate">
+                </mat-progress-bar>
+
+                <div *ngIf="uiChange; else elseBlock">
+                    <h1>Upload Excel</h1>
+                    <mat-form-field>
+                        <mat-label class="label-padding">Upload Excel File</mat-label>
+                        <ngx-mat-file-input matInput (change)="excelupload($event)" placeholder="Product image">
+                        </ngx-mat-file-input>
+                    </mat-form-field>
+
+                    <div>
+                        <button mat-raised-button type="button" style="cursor: pointer" (click)=(excelUploadForOrder())>
+                            <!-- Upload<mat-icon matSuffix style="cursor: pointer"></mat-icon> -->
+                            Upload
+                        </button>
+                    </div>
+
+                    <div>
+                        <table border="2" bordercolor="black" width="100%" cellspacing="0" cellpadding="5">
+                            <tr *ngFor="let item of showOrderDataOnTable">
+                                <td>{{item?.load_district}}</td>
+                                <td>{{item?.truck_loading_point}}</td>
+                                <td>{{item?.truck_loading_time}}</td>
+                                <td>{{item?.truck_loading_date}}</td>
+                                <td>{{item?.truck_unloading_point}}</td>
+                                <td>{{item?.loading_person}}</td>
+                                <td>{{item?.loading_phone}}</td>
+                                <td>{{item?.unload_district}}</td>
+                                <td>{{item?.truck_unloading_point}}</td>
+                                <td>{{item?.unloading_person}}</td>
+                                <td>{{item?.unloading_phone}}</td>
+                                <td>{{item?.product_name}}</td>
+                                <td>{{item?.product_spec}}</td>
+                                <td>{{item?.product_weight}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <button mat-raised-button type="button" class="btnU2" (click)=(isChangeBack())>
+                            Back<mat-icon matSuffix style="cursor: pointer">reply</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <ng-template #elseBlock>
+                    <div fxLayout="column" fxLayoutAlign="space-around center">
+                        <form [id]="formId" [formGroup]="form" (ngSubmit)="onSubmit(form.value)" autocomplete="off">
+
+                            <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" class="tab" formArrayName="order">
+                                <div *ngFor="let order of orderArr; let i = index" [formGroupName]="i" fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Loading District</mat-label>
+                                        <mat-select formControlName="load_district" required>
+                                            <mat-option *ngFor="let district of distList" [value]="district">
+                                                {{ district }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Loading point</mat-label>
+                                        <input matInput formControlName="truck_loading_point" placeholder="Loading point" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Loading point contact person name</mat-label>
+                                        <input matInput placeholder="Loading point contact person name" formControlName="loading_person" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Loading point contact person phone</mat-label>
+                                        <input class="label-padding" matInput formControlName="loading_phone" placeholder="loading  point contact person phone" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Unloading District</mat-label>
+                                        <mat-select formControlName="unload_district" required>
+                                            <mat-option *ngFor="let district of distList" [value]="district">
+                                                {{ district }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Unloading point</mat-label>
+                                        <input class="label-padding" matInput formControlName="truck_unloading_point" placeholder="Unloading point" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Unloading point contact person name</mat-label>
+                                        <input class="label-padding" matInput formControlName="unloading_person" placeholder="Loading point contact person name" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Unloading point contact person phone
+                                        </mat-label>
+                                        <input class="label-padding" matInput formControlName="unloading_phone" placeholder="Unloading point contact person phone" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(13% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Loading Date</mat-label>
+                                        <input class="label-padding" matInput [matDatepicker]="picker1" formControlName="truck_loading_date" placeholder="Loading Date" />
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(14% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label>Loading Time</mat-label>
+                                        <input type="time" id="loadingTime" matInput placeholder="Loading Time" formControlName="truck_loading_time" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Vehicle Type</mat-label>
+                                        <mat-select formControlName="type" (valueChange)="typeValue($event)">
+                                            <mat-option *ngFor="let type of types" [value]="type.value">
+                                                {{ type.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Vehicle Length</mat-label>
+                                        <mat-select formControlName="truck_type">
+                                            <mat-option *ngFor="let length of lengths" [value]="length">
+                                                {{ length.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline">
+                                        <!-- <mat-label class="label-padding">Product name</mat-label>
+                                    <input class="label-padding" matInput formControlName="product_name" placeholder="product name" /> -->
+                                        <mat-label>Product Name</mat-label>
+                                        <mat-select formControlName="product_name" required>
+
+                                            <mat-option *ngFor="let product of productList" [value]="product">
+                                                {{ product }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Product weight</mat-label>
+                                        <input class="label-padding" matInput formControlName="product_weight" placeholder="Product weight" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Number of trip</mat-label>
+                                        <input class="label-padding" matInput formControlName="number_of_trip" placeholder="Number of Trip" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(30% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Product spec</mat-label>
+                                        <input class="label-padding" matInput formControlName="product_spec" placeholder="Product size, packaging" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(20% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Upload product image</mat-label>
+                                        <ngx-mat-file-input matInput formControlName="product_image" placeholder="Product image">
+                                        </ngx-mat-file-input>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(20% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Bidding Date</mat-label>
+                                        <input class="label-padding" matInput [matDatepicker]="picker2" formControlName="truck_bidding_date" placeholder="Bidding Date" />
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" fxFlex="1 1 calc(20% - 10px)" fxFlex.lt-md="1 1 calc(30% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" class="from-color">
+                                        <mat-label class="label-padding">Bidding validity</mat-label>
+                                        <input type="time" id="time" matInput formControlName="bidding_validity" placeholder="Bidding validity" required />
+                                    </mat-form-field>
+                                    <div>
+                                        <button mat-raised-button color="warn" (click)="deleteOrder(i)" type="button">
+                                            Delete
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <mat-checkbox class="example-margin" formControlName="isSelect" (change)="Select($event.checked)" (change)="oneSelect(i)">check for duplicate
+                                        </mat-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div>
+                            <button style="position:absolute;
+                        right:80px;   background: none repeat scroll 0 0 #DCE3E1; 
+                        " mat-raised-button (click)="duplicate()">
+                                Make Duplicate
+                            </button>
+                        </div>
+                    </div>
+                </ng-template>
+                <div>
+                    <button mat-raised-button type="submit" [disabled]="isCheck" [attr.form]="formId" type="submit" class="btn">
+                        Submit Order
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,148 @@
+.example-card {
+    width: 340px;
+    height: 200px;
+    margin-top: 5px;
+    margin-left: 0px;
+    border-radius: 8px;
+}
+
+#design {
+    overflow-y: auto;
+    color: black;
+    background-color: white;
+    border: 1px solid #E7E5E5;
+}
+
+:host .mat-list-item-content {
+    padding: 0!important;
+}
+
+.mat-list .mat-list-item {
+    height: 28px;
+    /* default is 72px */
+}
+
+// .requiredOne {
+//   border-collapse: collapse;
+//   margin-top: 20px;
+//   width: 50%;
+//   text-align: center;
+//   margin: 0 auto;
+//   margin-bottom: 30px;
+// }
+// tr {
+//   background-color: white;
+//   font-family: lato;
+//   font-size: 12px;
+// }
+// // #customers tbody{
+// //   height: 40px;
+// // }
+.customers {
+    border-collapse: collapse;
+    margin-top: 20px;
+    //width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+th {
+    height: 50px;
+    font-family: lato;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    background-color: #006A66;
+}
+
+td {
+    height: 60px;
+    font-family: lato;
+    font-size: 12px;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+tr {
+    background-color: white;
+    border: 1px solid #d4e6e5;
+    height: 60px;
+    font-family: lato;
+    font-size: 12px;
+}
+
+.customers th {
+    background-color: #006A66;
+    color: white;
+}
+
+// // .mat-list .mat-list-item {
+// //   height: 35px;
+// //   font-size: 13px;
+// //   text-align: left;
+// // }
+.card-container {
+    height: 60px;
+    width: auto;
+    background-color: #1BBDB8;
+    margin-right: -300px;
+    margin-left: -24px;
+    margin-top: -24px;
+}
+
+h1 {
+    text-align: center;
+    color: #f2f2f2;
+    font-family: Lato;
+    font-size: 15px;
+    padding-top: 15px;
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    #customers th {
+        background-color: #006A66;
+        height: 40px;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #customers thead tr {
+        position: absolute;
+        // top: -9999px;
+        // left: -9999px;
+        color: #f2f2f2;
+    }
+    tr {
+        border: 1px solid #ccc;
+    }
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    /*
+	Label the data
+	*/
+}

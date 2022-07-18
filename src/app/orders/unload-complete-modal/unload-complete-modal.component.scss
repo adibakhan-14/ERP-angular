@@ -1,0 +1,391 @@
+// // table {
+// //   width: 100%;
+// // }
+
+// // // /************* Angular Mat Data Table Start *************/
+// // // .mat-data-table {
+// // //   width: 100%;
+// // //   border-collapse: collapse;
+// // // }
+
+// // /*Header height*/
+// // .mat-data-table tr.mat-header-row {
+// //   height: 40px !important;
+// //   }
+
+// //   /*Header backGroud color - Font color -border - padding */
+// //   .mat-data-table th.mat-header-cell {
+// //   background-color: #5abedd;
+// //   color: white;
+// //   // border: 1px solid hsl(212, 33%, 84%) !important;
+// //   padding-left: 5px;
+// //   font-family: 'Times New Roman';
+// //   text-align: center;
+// // }
+
+// // // /*data row align - height*/
+// // // .mat-data-table tr.mat-row {
+// // //   /* text-align: center; */
+// // //   height: 35px !important;
+// // // }
+
+// // /*data row border - padding*/
+// // .mat-data-table td.mat-cell {
+// //   // border: 1px solid #cad6e4 !important;
+// //   text-align: center;
+// //   font-family: 'Times New Roman';
+// //   font-size: 50%;
+// // }
+
+// // // .mat-data-table tr:nth-child(even) {
+// // //   background: #eff2f7;
+// // // }
+
+// // // .mat-data-table .mat-sort-header-arrow {
+// // //   color: #fff
+// // // }
+
+// // // .mat-table-action {
+// // //   width: 55px;
+// // // }
+
+// // .mat-form-field {
+// //   width: 95%;
+// //   font-size: 70%;
+// //   margin-top: 3px;
+// //   margin-bottom: -1.25em;
+// //    display:inline-block;
+// // }
+
+// // .mat-div {
+// //   width:65%;
+// //   height:100%;
+// //   // border:1px solid rgb(209, 207, 207);
+// //   overflow:hidden;
+// //   text-overflow: ellipsis;
+// //   display: flex;
+// //   justify-content: space-between;
+// // }
+
+
+// // // /************ Angular Mat Data Table End *************/
+
+
+// .mat-card-gap {
+//         margin-top: 10px;
+//       }
+      
+//       /************* Angular Mat Data Table Start *************/
+//       .mat-data-table {
+//         width: 100%;
+//         border-collapse: collapse;
+//       }
+      
+//       /*Header height*/// .mat-button{
+//       //   width: 5%;
+      
+//       //   font-family: 'Times New Roman';
+//       //   font-size: 50%;
+//       // }
+//       .mat-data-table tr.mat-header-row {
+//         height: 40px !important;
+//         }
+      
+//         /*Header backGroud color - Font color -border - padding */
+//         .mat-data-table th.mat-header-cell {
+//         background-color: #5abedd;;
+//         color: white;
+//         border: 1px solid hsl(212, 33%, 84%) !important;
+//         padding-left: 5px;
+//         font-family: 'Times New Roman';
+//       }
+      
+//       /*data row align - height*/
+//       .mat-data-table tr.mat-row {
+//         /* text-align: center; */
+//         height: 35px !important;
+//       }
+      
+//       /*data row border - padding*/
+//       .mat-data-table td.mat-cell {
+//         border: 1px solid #cad6e4 !important;
+//         padding-left: 5px;
+//         font-family: 'Times New Roman';
+//       }
+      
+//       .mat-data-table tr:nth-child(even) {
+//         background: #eff2f7;
+//       }
+      
+//       .mat-data-table .mat-sort-header-arrow {
+//         color: #fff
+//       }
+      
+//       .mat-table-action {
+//         width: 55px;
+//       }
+      
+//       .mat-button{
+//         height: 100%;
+//         font-family: 'Times New Roman';
+//         font-size: 80%;
+//         border-radius: 25px;
+//       }
+      
+//       .mat-div {
+//         width:100%;
+//         // height:100%;
+//         // // border:1px solid rgb(209, 207, 207);
+//         // overflow:hidden;
+//         // text-overflow: ellipsis;
+//         // display: flex;
+//         // background-color: #FF0000;
+//         justify-content: space-between;
+//       }
+//       /************ Angular Mat Data Table End *************/
+      
+      
+//       .delete-record-btn {
+//         color: #FF0000;
+//         cursor: pointer;
+//         outline: none;
+//       }
+//       .update-record-btn {
+//         cursor: pointer;
+//         outline: none;
+//       }
+
+//       .mat-raised-button.mat-warn {
+//         margin-top: 30px;
+//         font-size: Lato;
+//         font-size: 12px;
+//         color: white;
+//         background-color: #E80000;
+//         margin-right: 10px;
+//         height: 40px;
+//         width: 70px;
+//       }
+      
+//       .mat-raised-button.mat-success {
+//         margin-top: 30px;
+//         font-size: Lato;
+//         font-size: 12px;
+//         color: white;
+//         background-color: #00457E;
+//         width: auto;
+//         height: 40px;
+//       }
+      
+
+
+// table {
+//   font-family: 'Arial';
+//   margin: 0px auto;
+//   text-align: left;
+//   width: 100%;
+//   border-collapse: collapse;
+//   border: 1px solid #eee;
+//   border-bottom: 2px solid #00cccc;
+//   box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+//      0px 10px 20px rgba(0,0,0,0.05),
+//      0px 20px 20px rgba(0,0,0,0.05),
+//      0px 30px 20px rgba(0,0,0,0.05);
+// .customClass{
+//       border: 2px solid  #BDD3E5;
+//     }
+    
+//     td {
+//       color: #070707;
+//       text-align: left;
+//       padding: 2px 5px;
+//       overflow-y: auto;
+//       max-width: 180px;
+//       text-overflow: ellipsis " [..]";
+//     }
+//     th {
+//       background: #BDD3E5;
+//       color: black;
+//       text-transform: capitalize;
+//       font-size: 13px;
+//       height: 50px;
+//       &.last {
+//         border-right: none;
+//       }
+//       padding: 2px 5px;
+//     }
+//   }
+
+//   .mat-raised-button.mat-success {
+//     background-color: #519872;
+//     color: #fff;
+//   }
+  
+//   .mat-raised-button.mat-warn {
+//     background-color: #bd6514;
+//     color: #fff;
+//   }
+  
+//   .card-container {
+//     height: 60px;
+//     background-color: #00457E;
+//     margin-right: -24px;
+//     margin-left: -24px;
+//     margin-top: -24px;
+//   }
+  
+//   h1 {
+//     text-align: center;
+//     color: #f2f2f2;
+//     font-family: Manrope;
+//     font-size: 15px;
+//     padding-top: 15px;
+//   }
+  
+//   .from-color {
+//     background-color: #FFFFFF;
+//     border-radius: 5px;
+//     height: 49px;
+//     margin-top: 5px;
+//     border: 1px solid #E7E5E5;
+//   }
+  
+//   .label-padding {
+//     padding-left: 10px;
+//     color: #b4b4b4;
+//   }
+  
+//   input {
+//     padding-left: 10px;
+//   }
+  
+//   .mat-raised-button.mat-warn {
+//     font-size: Lato;
+//     font-size: 12px;
+//     color: white;
+//     background-color: #E80000;
+//     margin-right: 10px;
+//     width: 120px;
+//     height: 40px;
+//   }
+  
+//   .mat-raised-button.mat-success {
+//     font-size: Lato;
+//     font-size: 12px;
+//     align-content: center;
+//     color: white;
+//     background-color: #00457E;
+//     width: 120px;
+//     height: 40px;
+//   }
+
+
+.continer {
+  padding: 50px;
+  background-color: white;
+  background-size: cover;
+  height: 100%;
+}
+
+h2 {
+  font-weight: 500;
+  border: #00457E;
+  height: 70px;
+}
+
+.truckInfo {
+  background-color: #D7E9F8;
+}
+
+.loadInfo {
+  background-color: #D6F7E1;
+}
+
+.unloadInfo {
+  background-color: #FFEDDB;
+}
+
+.prodInfo {
+  background-color: #E7E2F8;
+}
+
+.biddInfo {
+  background-color: #C0EAEA;
+}
+
+.title {
+  font-family: 'Manrope';
+
+}
+
+// .btnU {
+//   background: #00457E;
+//   color: #FFFFFF;
+//   margin-left: 2%;
+//   height: 40px;
+//   width: 280px;
+// }
+
+// .input-design {
+//     width: 422px;
+//     margin: 10px;
+//     // border: 1px solid #E7E5E5;
+// }
+// button {
+//   width: 176px;
+//   height: 32px;
+//   margin-left: 2%;
+// }
+.mat-form-field{
+  width:140px !important;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 10px;
+}
+
+.buttonHeightWidth {
+  width: -10px
+}
+.card-container {
+  height: 60px;
+  background-color: #00457E;
+  margin-right: -24px;
+  margin-left: -24px;
+  margin-top: -24px;
+}
+
+h1 {
+  text-align: center;
+  color: #f2f2f2;
+  font-family: Manrope;
+  font-size: 15px;
+  padding-top: 15px;
+}
+
+.mat-raised-button.mat-warn {
+  font-size: Lato;
+  font-size: 12px;
+  color: white;
+  background-color: #E80000;
+  margin-right: 10px;
+  width: 120px;
+  height: 40px;
+}
+
+.mat-raised-button.mat-success {
+  font-size: Lato;
+  font-size: 12px;
+  align-content: center;
+  color: white;
+  background-color: #00457E;
+  width: 120px;
+  height: 40px;
+}
+
+.myDiv {
+  border: 2px outset #00457E;
+  // background-color: lightblue;    
+  text-align: center;
+}

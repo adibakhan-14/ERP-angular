@@ -1,0 +1,26 @@
+<!-- <h1>Do You Want to Get The Challan Copy?</h1> -->
+<!-- <div style="margin-left: 20%">
+  <img src="../assets/images/pdf_image.png" alt="" />
+</div> -->
+<h2 style="text-align: center;">Conditions</h2>
+<ul>
+  <li>All price is in BDT and excluding AIT, VAT, TAX & any other charges.</li>
+  <li>The demurrage will be charged BDT2000 for each truck and BDT 3000 for each Trailer for the delay (after 6 hrs of reaching & upto 12 hours) at Load & Unload point and other standard demurrage policies will be applicable.</li>
+  <li>If no issues raised in written within 03 days, will be considered this trip successfully completed.</li>
+  <li>Any unavoidable circumstances, ie: political or natural disasters, Fuel or Toll price hikes, or issue arising in between the shipment OR during any festival (ie: before & after 20 days of EID), any amendment of rates in the agreement shall be fixed by the mutual understanding of both parties.</li>
+  <li>The customer is responsible to declare the products type and nature, If the declared product and the supplied product differ customer is solely responsible for the products legitimacy, the responsibility for the undeclared or illegal product lies not with Streat Limited.</li>
+  <li>If any law or regulation is imposed by the government and it leads to an increase in Transportation costs, then both parties will arrange for a re-negotiation of fare.</li>
+</ul>
+<br/>
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="disabled" (click)="checkingFunction(disabled)">Accepted</mat-checkbox>
+    </section>
+<div fxLayoutAlign="center center">
+  <button type="button" mat-raised-button color="warn" [mat-dialog-close]>
+    CANCEL
+  </button>
+  <button mat-raised-button (click)="buttonCall()" color="success" [disabled]="this.trigger">
+    Challan Pdf
+  </button>
+</div>
+<!-- <button mat-button (click)="">Open dialog</button> -->

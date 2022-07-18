@@ -1,0 +1,319 @@
+// .requiredOne {
+//     border-collapse: collapse;
+//     width: 100%;
+//     margin-bottom: 30px;
+//     margin: 5px;
+//   }
+  
+  
+//   td {
+//     color: #000000;
+//     width: 100%;
+  
+//   }
+  
+//   tr {
+//     background-color: white;
+//     border: 1px solid #d4e6e5;
+//     height: 30px;
+  
+//   }
+  
+//   .requiredOne th {
+//     background-color: #BDD3E5;
+//     color: #000000;
+//     width: 100%;
+//     height: 40px;
+//     padding: 10px;
+  
+  
+//   }
+  
+//   .mat-raised-button.mat-success {
+//     background-color: #519872;
+//     color: #fff;
+//   }
+  
+//   .mat-raised-button.mat-warn {
+//     background-color: #bd6514;
+//     color: #fff;
+//   }
+  
+// //   .card-container {
+// //     height: 60px;
+// //     background-color: #00457E;
+// //     margin-right: -24px;
+// //     margin-left: -24px;
+// //     margin-top: -24px;
+// //   }
+  
+// //   h1 {
+// //     text-align: center;
+// //     color: #f2f2f2;
+// //     font-family: Manrope;
+// //     font-size: 15px;
+// //     padding-top: 15px;
+// //   }
+  
+// //   .from-color {
+// //     background-color: #FFFFFF;
+// //     border-radius: 5px;
+// //     height: 49px;
+// //     margin-top: 5px;
+// //     border: 1px solid #E7E5E5;
+// //   }
+  
+// //   .label-padding {
+// //     padding-left: 10px;
+// //     color: #b4b4b4;
+// //   }
+  
+// //   input {
+// //     padding-left: 10px;
+// //   }
+  
+//   .mat-raised-button.mat-warn {
+//     font-size: Lato;
+//     font-size: 12px;
+//     color: white;
+//     background-color: #E80000;
+//     margin-right: 10px;
+//     height: 40px;
+//     width: 70px;
+//   }
+  
+//   .mat-raised-button.mat-success {
+//     font-size: Lato;
+//     font-size: 12px;
+//     color: white;
+//     background-color: #00457E;
+//     width: auto;
+//     height: 40px;
+//   }
+
+
+// // table {
+// //   font-family: 'Arial';
+// //   margin: 0px auto;
+// //   text-align: left;
+// //   width: 100%;
+// //   border-collapse: collapse;
+// //   border: 1px solid #eee;
+// //   border-bottom: 2px solid #00cccc;
+// //   box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+// //      0px 10px 20px rgba(0,0,0,0.05),
+// //      0px 20px 20px rgba(0,0,0,0.05),
+// //      0px 30px 20px rgba(0,0,0,0.05);
+// // .customClass{
+// //       border: 2px solid  #BDD3E5;
+// //     }
+    
+// //     td {
+// //       color: #070707;
+// //       text-align: left;
+// //     }
+// //     th {
+// //       background: #BDD3E5;
+// //       color: black;
+// //       text-transform: capitalize;
+// //       font-size: 13px;
+// //       height: 50px;
+// //       &.last {
+// //         border-right: none;
+// //       }
+// //     }
+// //   }
+
+// table {
+//     font-family: 'Arial';
+//     margin: 0px auto;
+//     text-align: left;
+//     width: 100%;
+//     border-collapse: collapse;
+//     border: 1px solid #eee;
+//     border-bottom: 2px solid #00cccc;
+//     box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+//        0px 10px 20px rgba(0,0,0,0.05),
+//        0px 20px 20px rgba(0,0,0,0.05),
+//        0px 30px 20px rgba(0,0,0,0.05);
+//   .customClass{
+//         border: 2px solid  #BDD3E5;
+//       }
+      
+//       td {
+//         color: #070707;
+//         text-align: left;
+//         padding: 2px 5px;
+//         overflow-y: auto;
+//         max-width: 180px;
+//         text-overflow: ellipsis " [..]";
+//       }
+//       th {
+//         background: #BDD3E5;
+//         color: black;
+//         text-transform: capitalize;
+//         font-size: 13px;
+//         height: 50px;
+//         &.last {
+//           border-right: none;
+//         }
+//         padding: 2px 5px;
+//       }
+//     }
+  
+//     .mat-raised-button.mat-success {
+//       background-color: #519872;
+//       color: #fff;
+//     }
+    
+//     .mat-raised-button.mat-warn {
+//       background-color: #bd6514;
+//       color: #fff;
+//     }
+    
+//     .card-container {
+//       height: 60px;
+//       background-color: #00457E;
+//       margin-right: -24px;
+//       margin-left: -24px;
+//       margin-top: -24px;
+//     }
+    
+//     h1 {
+//       text-align: center;
+//       color: #f2f2f2;
+//       font-family: Manrope;
+//       font-size: 15px;
+//       padding-top: 15px;
+//     }
+    
+//     .from-color {
+//       background-color: #FFFFFF;
+//       border-radius: 5px;
+//       height: 49px;
+//       margin-top: 5px;
+//       border: 1px solid #E7E5E5;
+//     }
+    
+//     .label-padding {
+//       padding-left: 10px;
+//       color: #b4b4b4;
+//     }
+    
+//     input {
+//       padding-left: 10px;
+//     }
+    
+//     .mat-raised-button.mat-warn {
+//       font-size: Lato;
+//       font-size: 12px;
+//       color: white;
+//       background-color: #E80000;
+//       margin-right: 10px;
+//       width: 120px;
+//       height: 40px;
+//     }
+    
+//     .mat-raised-button.mat-success {
+//       font-size: Lato;
+//       font-size: 12px;
+//       align-content: center;
+//       color: white;
+//       background-color: #00457E;
+//       width: 120px;
+//       height: 40px;
+//     }
+
+
+.continer {
+  padding: 50px;
+  background-color: white;
+  background-size: cover;
+  height: 100%;
+}
+
+h2 {
+  font-weight: 500;
+  border: #00457E;
+  height: 70px;
+}
+
+.truckInfo {
+  background-color: #D7E9F8;
+}
+
+.loadInfo {
+  background-color: #D6F7E1;
+}
+
+.unloadInfo {
+  background-color: #FFEDDB;
+}
+
+.prodInfo {
+  background-color: #E7E2F8;
+}
+
+.biddInfo {
+  background-color: #C0EAEA;
+}
+
+.title {
+  font-family: 'Manrope';
+
+}
+
+.mat-form-field{
+  width:140px !important;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 10px;
+}
+
+.buttonHeightWidth {
+  width: -10px
+}
+.card-container {
+  height: 60px;
+  background-color: #00457E;
+  margin-right: -24px;
+  margin-left: -24px;
+  margin-top: -24px;
+}
+
+h1 {
+  text-align: center;
+  color: #f2f2f2;
+  font-family: Manrope;
+  font-size: 15px;
+  padding-top: 15px;
+}
+
+.mat-raised-button.mat-warn {
+  font-size: Lato;
+  font-size: 12px;
+  color: white;
+  background-color: #E80000;
+  margin-right: 10px;
+  width: 120px;
+  height: 40px;
+}
+
+.mat-raised-button.mat-success {
+  font-size: Lato;
+  font-size: 12px;
+  align-content: center;
+  color: white;
+  background-color: #00457E;
+  width: 120px;
+  height: 40px;
+}
+
+.myDiv {
+  border: 2px outset #00457E;
+  // background-color: lightblue;    
+  text-align: center;
+}

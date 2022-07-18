@@ -1,0 +1,132 @@
+<div id="container">
+  <mat-toolbar class="toolbar" *ngIf="isLoggedIn$ | async">
+    <div class="content" fxLayout="row" fxLayoutAlign="space-around center" fxFlexFill >
+      <div fxFlex="20">
+        <button mat-icon-button (click)="sidenav.open()">
+          <mat-icon style="color: #00437A;">menu</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="53">
+        <div [routerLink]="['/dashboard']" id="logo">
+          <img src="../assets/images/logo.png " width="180" alt="logo.img" />
+        </div>
+      </div>
+      <div fxFlex="27">
+        <!-- <label class="toggle-switchy"  data-size="xl"  data-style="rounded" 
+        >
+          <input checked type="checkbox"  (click)="logout()">
+          <span class="toggle">
+            <span class="switch"></span>
+          </span>
+        </label> -->
+
+        <div  fxLayout="row" fxLayoutAlign="space-around center"  fxFlexFill style="background-color: #EDF1F5; border-radius: 50px; border:2px solid #CAD6E4; vertical-align: middle; padding-top: 5px;">
+          <div style="padding:2px;" >
+            <img src="/assets/images/avatar_square_blue .png" width="40">
+          </div>
+
+          <div>
+            <p style="font-size: 12px;">{{username}}</p>
+          </div>
+         
+          <div>
+            <input type="button"class="button-add" (click)="logout()" />
+
+          </div>
+
+          </div>
+
+      </div>
+
+    </div>
+
+ </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav autoFocus="false" [(opened)]="isMenuOpen" mode="close" class="sidenav"
+      (click)="sidenav.toggle()" style="background-color: white; width: 21.5%; height: 100%">
+      <mat-nav-list>
+        <div class="avatar">
+          <img src="/assets/images/avatar_square_blue .png" />
+        </div>
+
+        <div class="username">
+          <h2 style="font-size: 14px">{{ username }}</h2>
+          <a id="password" [routerLink]="['account/change-password']" [routerLinkActive]="['active']">
+            Change Password</a>
+        </div>
+        <div class="btn-group">
+          <a mat-list-item href="/dashboard" style="margin-top: 30px"><svg style="padding-right: 10px"
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+              <defs>
+                <style>
+                  .cls-2 {
+                    fill: #ffffff
+                  }
+                </style>
+              </defs>
+              <path id="Icon_1" data-name="Icon 1" class="cls-2"
+                d="M4.5,13.389h7.111V4.5H4.5Zm0,7.111h7.111V15.167H4.5Zm8.889,0H20.5V11.611H13.389Zm0-16V9.833H20.5V4.5Z"
+                transform="translate(-4.5 -4.5)" />
+            </svg>
+
+            Dashboard
+          </a>
+          <a mat-list-item routerLink="/orders">
+            <svg style="padding-right: 10px" id="Group_344" data-name="Group 344" xmlns="http://www.w3.org/2000/svg"
+              width="16" height="11.245" viewBox="0 0 16 11.245">
+              <defs>
+                <style>
+                  .cls-2 {
+                    fill: #1bbdb8;
+                  }
+                </style>
+              </defs>
+              <path id="Path_679" data-name="Path 679" class="cls-2"
+                d="M-187.439,110.431v-6.807a.685.685,0,0,1,.685-.685h6.8a.685.685,0,0,1,.685.685v6.807a.228.228,0,0,1-.228.228h-7.717A.228.228,0,0,1-187.439,110.431Zm5.494,2.332a1.421,1.421,0,0,1-1.421,1.421,1.421,1.421,0,0,1-1.421-1.421,1.421,1.421,0,0,1,1.421-1.421A1.421,1.421,0,0,1-181.944,112.763Zm-.71,0a.71.71,0,0,0-.71-.71.71.71,0,0,0-.71.71.71.71,0,0,0,.71.71A.71.71,0,0,0-182.655,112.763Zm-1.934-1.421h-3.183a.228.228,0,0,0-.228.228v.693a.228.228,0,0,0,.228.228h2.552A1.874,1.874,0,0,1-184.588,111.343Zm10.077,1.421a1.421,1.421,0,0,1-1.421,1.421,1.421,1.421,0,0,1-1.421-1.421,1.421,1.421,0,0,1,1.421-1.421A1.421,1.421,0,0,1-174.511,112.763Zm-.71,0a.71.71,0,0,0-.71-.71.71.71,0,0,0-.71.71.71.71,0,0,0,.71.71A.71.71,0,0,0-175.222,112.763Zm3.222-1.192v.693a.228.228,0,0,1-.228.228h-1.848a1.878,1.878,0,0,0-1.855-1.606,1.879,1.879,0,0,0-1.855,1.606h-3.722a1.874,1.874,0,0,0-.632-1.149h3.529v-6.53a.457.457,0,0,1,.457-.457H-176a1.826,1.826,0,0,1,1.514.8l1.39,2.058a1.826,1.826,0,0,1,.313,1.022v3.1h.556A.228.228,0,0,1-172,111.571Zm-2.316-4.3-1.111-1.579a.228.228,0,0,0-.187-.1h-1.733a.228.228,0,0,0-.228.228V107.4a.228.228,0,0,0,.228.228h2.844A.228.228,0,0,0-174.316,107.271Z"
+                transform="translate(188 -102.939)" />
+            </svg> Order Place
+
+
+          </a>
+          <a mat-list-item routerLink="/customer">
+            <svg style="padding-right: 10px" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 16 16">
+              <defs>
+                <style>
+                  .cls-2 {
+                    fill: #1bbdb8;
+                  }
+                </style>
+              </defs>
+              <g id="Group_346" data-name="Group 346" transform="translate(-180.934 -235.333)">
+                <g id="Group_345" data-name="Group 345">
+                  <path id="Path_3145" data-name="Path 3145" class="cls-2"
+                    d="M195.219,235.333H182.648a1.714,1.714,0,0,0-1.714,1.714v12.572a1.714,1.714,0,0,0,1.714,1.714h12.571a1.714,1.714,0,0,0,1.715-1.714V237.047A1.715,1.715,0,0,0,195.219,235.333ZM186.076,247.9h-1.714a.571.571,0,0,1,0-1.142h1.714a.571.571,0,1,1,0,1.142Zm0-4h-1.714a.571.571,0,0,1,0-1.142h1.714a.571.571,0,1,1,0,1.142Zm0-4h-1.714a.571.571,0,0,1,0-1.142h1.714a.571.571,0,1,1,0,1.142Zm7.429,8h-5.143a.571.571,0,0,1,0-1.142h5.143a.571.571,0,0,1,0,1.142Zm0-4h-5.143a.571.571,0,0,1,0-1.142h5.143a.571.571,0,0,1,0,1.142Zm0-4h-5.143a.571.571,0,0,1,0-1.142h5.143a.571.571,0,0,1,0,1.142Z" />
+                </g>
+
+              </g>
+            </svg> Reports
+          </a>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <div style="background-color: #f7f5f5">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer" *ngIf="user">
+      <div>
+        &copy; Copyright TruckLoad.All rights reserved || Designed by ERA-InfoTech Limited.
+      </div>
+    </div>
+    <!--
+<mat-card [ngClass]="[user ? 'card' : 'card-auth']">
+    <mat-card-content>
+
+
+
+    </mat-card-content>
+  </mat-card> -->
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,57 @@
+
+<div fxLayout="column" fxLayoutAlign="space-around center">
+    <div style="background-color:#1BBDB8;width: 730px; margin-top: -24px">
+        <title style="text-align: center;padding-top:15px; color:#FFFFFF" mat-dialog-title>Driver Profile Add{{ info ? "Edit" : "Add" }}</title>
+
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="space-around center" style="margin-top:10px;">
+        <form [formGroup]="driverForm" (ngSubmit)="driverAdd(driverForm.value)">
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+                <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
+                    <mat-form-field fxFlex="0 1 calc(31% + 5px)" fxFlex.lt-md="0 1 calc(44%)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="none" class="from-color">
+                        <input matInput class="label-padding" type="text" placeholder="Name" formControlName="name">
+                        <mat-label class="label-padding">Driver Name</mat-label>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="0 2 calc(31% + 5px)" fxFlex.lt-md="0 1 calc(44%)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="none" class="from-color">
+                        <input matInput class="label-padding" type="text" placeholder="Driving License No." formControlName="license_number">
+                        <mat-label class="label-padding">License No.</mat-label>
+
+                    </mat-form-field>
+                    <mat-form-field fxFlex="0 3 calc(31% + 5px)" fxFlex.lt-md="0 1 calc(44%)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="none" class="from-color">
+                        <input matInput class="label-padding" type="text" placeholder="NID" formControlName="nid_number">
+                        <mat-label class="label-padding">NID No.</mat-label>
+                    </mat-form-field>
+<!-- 
+                    <mat-form-field fxFlex="1 2 calc(31% + 5px)" fxFlex.lt-md="0 1 calc(44%)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="none" class="from-color">
+                        <input matInput class="label-padding" [matDatepicker]="picker1" formControlName="validity" placeholder="Valid Till" />
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-label class="label-padding">License Validity</mat-label>
+
+                    </mat-form-field> -->
+                    <mat-form-field fxFlex="1 2 calc(31% + 5px)" fxFlex.lt-md="0 1 calc(44%)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="none" class="from-color">
+                        <input matInput class="label-padding" type="text" name="phone" placeholder="Phone number" formControlName="phone">
+                        <mat-error *ngIf="
+                        phone.invalid &&
+                        (phone.invalid || phone.touched)
+                      ">
+                            <ng-container *ngIf="phone.hasError('required')">Driver phone is required.</ng-container>
+                            <ng-container *ngIf="phone.hasError('pattern')">Please, Enter 11 digit Mobile Number.
+
+                            </ng-container>
+                        </mat-error>
+                        <mat-label class="label-padding">Phone no.</mat-label>
+                    </mat-form-field>
+
+
+
+                    <div fxLayoutGap="10px" class="buttonpos">
+                        <button mat-button type="submit" [disabled]="driverForm.invalid " mat-raised-button color="success">Save</button>
+                        <button mat-button mat-dialog-close mat-raised-button color="warn">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>

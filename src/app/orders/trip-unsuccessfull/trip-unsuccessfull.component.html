@@ -1,0 +1,67 @@
+<!-- <div fxLayout="column" fxLayoutAlign="space-around center">
+  <div style="background-color:#1BBDB8;width: 730px; margin-top: -24px">
+      <title style="text-align: center;padding-top:15px; color:#FFFFFF" mat-dialog-title>Driver Profile Add</title>
+  </div> -->
+<div style="width: 100%; height: 60px; background-color: #1bbdb8">
+  <title
+    style="text-align: center; padding-top: 15px; color: #ffffff"
+    mat-dialog-title
+  >
+    On Going trips
+  </title>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-table-container">
+    <mat-form-field appearance="standard">
+      <mat-label style="padding-left: 8px">Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Search"
+        #input
+      />
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="trip_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Trip ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.trip_id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Trip Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
+      <ng-container matColumnDef="created_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.created_date}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
+        <td mat-cell *matCellDef="let element">
+          <a (click)="openDialog('text',element)">view</a>
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        bgColor="accent"
+      ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[10, 25, 100]"
+      [style.display]="
+        dataSource && dataSource.data.length > 7 ? 'inline' : 'none'
+      "
+    ></mat-paginator>
+  </div>
+</div>
